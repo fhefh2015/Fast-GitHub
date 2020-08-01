@@ -19,4 +19,7 @@ Host git.zhlh6.cn
 测试 SSH 连接
 ```bash
 ssh -T git@git.zhlh6.cn
+
+# 成功
+You've successfully authenticated, but GitHub does not provide shell access
 ```
