@@ -1,6 +1,15 @@
 # Fast-GitHub
 国内Github下载很慢，用上了这个插件后，下载速度嗖嗖嗖的~！
 
+# 下载插件
+https://chrome.google.com/webstore/detail/github%E5%8A%A0%E9%80%9F/mfnkflidjnladnkldfonnaicljppahpg
+
+# 插件预览
+
+![OP5jdNK](https://i.imgur.com/OP5jdNK.png)
+
+
+
 # 如何使用SSH通道
 
 配置用户配置文件 (`~/.ssh/config`)
