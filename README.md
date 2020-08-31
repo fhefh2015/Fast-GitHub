@@ -1,6 +1,8 @@
 # Fast-GitHub
 国内Github下载很慢，用上了这个插件后，下载速度嗖嗖嗖的~！
 
+[![Page Views Count](https://badges.toozhao.com/badges/01EH1R0YMQANV1ACQXTEBK7JCN/green.svg)](https://badges.toozhao.com/badges/01EH1R0YMQANV1ACQXTEBK7JCN/green.svg "Get your own page views count badge on badges.toozhao.com")
+
 # 下载插件
 https://chrome.google.com/webstore/detail/github%E5%8A%A0%E9%80%9F/mfnkflidjnladnkldfonnaicljppahpg
 
