@@ -23,7 +23,7 @@ Host github.com
 	HostName github.com
 	User git
 	IdentityFile Specify the path to the private key file used for key authentication
-# 新增如下内容
+# Add the following
 Host git.zhlh6.cn
 	HostName git.zhlh6.cn
 	User git
@@ -33,7 +33,7 @@ Testing SSH Connections
 ```bash
 ssh -T git@git.zhlh6.cn
 
-# 成功
+# successful
 You've successfully authenticated, but GitHub does not provide shell access
 ```
 # If you find this plugin helpful, buy me a Starbucks!😁
