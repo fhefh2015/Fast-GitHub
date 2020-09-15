@@ -1,8 +1,12 @@
 # Version Records
-20200915
+
 v1.1.0
+
 1. add fusion mode, please check in plugin options
 2. Fix custom accelerated URL problem
+3. Fix UI display problems
+
+![pV9pLOW](https://i.imgur.com/pV9pLOW.png)
 
 
 # INTRODUCTION
@@ -48,10 +52,14 @@ You've successfully authenticated, but GitHub does not provide shell access
 
 -----
 # 版本记录
-20200915
+
 v1.1.0
+
 1.新增融合模式，请在插件选项中查看
 2.修复自定义加速网址问题
+3.修复界面显示问题
+
+![pV9pLOW](https://i.imgur.com/pV9pLOW.png)
 
 # 简介
 # Fast-GitHub
