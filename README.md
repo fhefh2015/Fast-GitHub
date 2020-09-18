@@ -4,6 +4,8 @@ v1.1.1
 
 1.Github part of the page structure modified to accommodate the new layout.
 
+![3b1kD43](https://i.imgur.com/3b1kD43.png)
+
 v1.1.0
 
 1. add fusion mode, please check in plugin options
