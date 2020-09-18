@@ -4,6 +4,14 @@ v1.1.1
 
 1.Github part of the page structure modified to accommodate the new layout.
 
+Known issues
+
+Octotree 6.0.0 has an impact on GitHub page layouts
+
+Solution
+
+Disable Octotree or use <a href="https://chrome.google.com/webstore/detail/git-master/klmeolbcejnhefkapdchfhlhhjgobhmo" target="_blank">Git Master</a>
+
 ![3b1kD43](https://i.imgur.com/3b1kD43.png)
 
 v1.1.0
@@ -62,6 +70,16 @@ You've successfully authenticated, but GitHub does not provide shell access
 v1.1.1
 
 Github部分网页结构修改 适配新布局
+
+已知问题
+
+Octotree 6.0.0 对GitHub页面布局有影响
+
+解决
+
+禁用Octotree或者使用<a href="https://chrome.google.com/webstore/detail/git-master/klmeolbcejnhefkapdchfhlhhjgobhmo" target="_blank">Git Master</a>
+
+![3b1kD43](https://i.imgur.com/3b1kD43.png)
 
 v1.1.0
 
