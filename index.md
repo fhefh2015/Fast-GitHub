@@ -1,4 +1,8 @@
-# Version Records
+# Version
+
+v1.1.1
+
+1.Github part of the page structure modified to accommodate the new layout.
 
 v1.1.0
 
@@ -53,10 +57,16 @@ You've successfully authenticated, but GitHub does not provide shell access
 -----
 # 版本记录
 
+v1.1.1
+
+Github部分网页结构修改 适配新布局
+
 v1.1.0
 
 1.新增融合模式，请在插件选项中查看
+
 2.修复自定义加速网址问题
+
 3.修复界面显示问题
 
 ![pV9pLOW](https://i.imgur.com/pV9pLOW.png)
