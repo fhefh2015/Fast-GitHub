@@ -61,9 +61,6 @@ ssh -T git@git.zhlh6.cn
 # successful
 You've successfully authenticated, but GitHub does not provide shell access
 ```
-# If you find this plugin helpful, buy me a Starbucks!😁
-<a href="https://www.buymeacoffee.com/fhefh2015" target="_blank"><img src="https://www.buymeacoffee.com/assets/img/custom_images/orange_img.png" alt="Buy Me A Coffee" style="height: 41px !important;width: 174px !important;box-shadow: 0px 3px 2px 0px rgba(190, 190, 190, 0.5) !important;-webkit-box-shadow: 0px 3px 2px 0px rgba(190, 190, 190, 0.5) !important;" ></a>
-
 -----
 # 版本记录
 
@@ -127,5 +124,3 @@ ssh -T git@git.zhlh6.cn
 # 成功
 You've successfully authenticated, but GitHub does not provide shell access
 ```
-# 如果觉得这个插件对你有帮助，可以请我吃个鸡腿😁
-<a href="https://dun.mianbaoduo.com/@justdoit" target="_blank">请我吃鸡腿🍗</a>
