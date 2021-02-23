@@ -1,5 +1,11 @@
 # Version
 
+v1.2.0
+
+1. Disabled mixed mode, separate acceleration button option
+
+2. Remove configuration page
+
 v1.1.1
 
 1.Github part of the page structure modified to accommodate the new layout.
@@ -19,11 +25,6 @@ v1.1.0
 1. add fusion mode, please check in plugin options
 2. Fix custom accelerated URL problem
 3. Fix UI display problems
-
-v1.2.0
-
-1. Disabled mixed mode, separate acceleration button option
-2. Remove configuration page
 
 ![pV9pLOW](https://i.imgur.com/pV9pLOW.png)
 
@@ -72,6 +73,12 @@ You've successfully authenticated, but GitHub does not provide shell access
 
 # 版本记录
 
+v1.2.0
+
+1.混合模式失效,单独列出加速按钮选项
+
+2.删除配置页
+
 v1.1.1
 
 Github 部分网页结构修改 适配新布局
@@ -93,12 +100,6 @@ v1.1.0
 2.修复自定义加速网址问题
 
 3.修复界面显示问题
-
-v1.2.0
-
-1.混合模式失效,单独列出加速按钮选项
-
-2.删除配置页
 
 ![pV9pLOW](https://i.imgur.com/pV9pLOW.png)
 
