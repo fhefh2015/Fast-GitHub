@@ -1,8 +1,8 @@
 /**
  * 解决github pajx问题
- * Is there a JavaScript / jQuery DOM change listener? - Stack Overflow 
- * https://stackoverflow.com/questions/2844565/is-there-a-javascript-jquery-dom-change-listener/39508954#39508954 
- * 
+ * Is there a JavaScript / jQuery DOM change listener? - Stack Overflow
+ * https://stackoverflow.com/questions/2844565/is-there-a-javascript-jquery-dom-change-listener/39508954#39508954
+ *
  */
 
 //fastgit.org加速通道
@@ -22,18 +22,17 @@ const fast_git_ssh_url = "git@hub.fastgit.org:";
 
 // Github网址解析
 const url = new URL(window.location.href);
-const path = url.pathname.split('/').slice(1, 3).join('/');
-const [github_auth_name, git_name] = url.pathname.split('/').slice(1, 3);
-
+const path = url.pathname.split("/").slice(1, 3).join("/");
+const [github_auth_name, git_name] = url.pathname.split("/").slice(1, 3);
 
 window.setTimeout(function () {
-    addCloneButton();
-    addReleaseButton();
+  addCloneButton();
+  addReleaseButton();
 }, 600);
 
 //添加克隆按钮
 function addCloneButton() {
-    const template = `<span class="d-flex" id="fast_github">
+  const template = `<span class="d-flex" id="fast_github">
 <details class="get-repo-select-menu js-get-repo-select-menu  position-relative details-overlay details-reset">
   <summary class="btn ml-2 btn-primary">
       加速
@@ -121,62 +120,64 @@ function addCloneButton() {
   </div>
 </details>
 </span>`;
-    const insertElem = document.querySelector(".file-navigation");
-    const frag = document.createRange().createContextualFragment(template);
-    insertElem && insertElem.appendChild(frag.firstChild);
+  const insertElem = document.querySelector(".file-navigation");
+  const frag = document.createRange().createContextualFragment(template);
+  insertElem && insertElem.appendChild(frag.firstChild);
 }
 
 //release页面加速
 function addReleaseButton() {
+  const releaseElems = document.querySelectorAll(
+    ".release .Box--condensed .Box-body"
+  );
 
-    const releaseElems = document.querySelectorAll(".release .Box--condensed .Box-body");
+  releaseElems.forEach(function (elem) {
+    // 修复按钮重复创建问题
+    const buttonData = elem.querySelector("a").getAttribute("data-button");
+    if (parseInt(buttonData)) {
+      return true;
+    }
 
-    releaseElems.forEach(function (elem) {
-
-        // 修复按钮重复创建问题
-        const buttonData = elem.querySelector('a').getAttribute("data-button");
-        if (parseInt(buttonData)) {
-            return true;
-        }
-
-        const href = elem.querySelector('a').getAttribute("href");
-        elem.querySelector('a').setAttribute("data-button", 1);
-        const template = `
+    const href = elem.querySelector("a").getAttribute("href");
+    elem.querySelector("a").setAttribute("data-button", 1);
+    const template = `
     <a class="btn btn-outline" style="margin-top:10px;" rel="nofollow" href="${cf_url}https://github.com/${href}">加速下载</a>
     `;
-        const frag = document.createRange().createContextualFragment(template);
-        elem.appendChild(frag);
-    });
+    const frag = document.createRange().createContextualFragment(template);
+    elem.appendChild(frag);
+  });
 
-    const zipedElems = document.querySelectorAll(".repository-content .commit");
-    zipedElems.forEach(function (elem, index) {
+  const zipedElems = document.querySelectorAll(".repository-content .commit");
+  zipedElems.forEach(function (elem, index) {
+    const elems = elem.querySelectorAll("ul .d-inline-block");
 
-        const elems = elem.querySelectorAll("ul .d-inline-block");
-
-        elems.forEach(function (el, index) {
-            if (index > 1) {
-                const zipElem = el.querySelector("a");
-                const zip_href = zipElem.getAttribute("href");
-                const zip_text = zipElem.innerText;
-                const zip_template = `
+    elems.forEach(function (el, index) {
+      if (index > 1) {
+        const zipElem = el.querySelector("a");
+        const zip_href = zipElem.getAttribute("href");
+        const zip_text = zipElem.innerText;
+        const zip_template = `
           <a class="muted-link" href="${cf_url}https://github.com/${zip_href}" rel="nofollow" data-create="1">
           <svg class="octicon octicon-file-zip" viewBox="0 0 16 16" version="1.1" width="16" height="16" aria-hidden="true"><path fill-rule="evenodd" d="M3.5 1.75a.25.25 0 01.25-.25h3a.75.75 0 000 1.5h.5a.75.75 0 000-1.5h2.086a.25.25 0 01.177.073l2.914 2.914a.25.25 0 01.073.177v8.586a.25.25 0 01-.25.25h-.5a.75.75 0 000 1.5h.5A1.75 1.75 0 0014 13.25V4.664c0-.464-.184-.909-.513-1.237L10.573.513A1.75 1.75 0 009.336 0H3.75A1.75 1.75 0 002 1.75v11.5c0 .649.353 1.214.874 1.515a.75.75 0 10.752-1.298.25.25 0 01-.126-.217V1.75zM8.75 3a.75.75 0 000 1.5h.5a.75.75 0 000-1.5h-.5zM6 5.25a.75.75 0 01.75-.75h.5a.75.75 0 010 1.5h-.5A.75.75 0 016 5.25zm2 1.5A.75.75 0 018.75 6h.5a.75.75 0 010 1.5h-.5A.75.75 0 018 6.75zm-1.25.75a.75.75 0 000 1.5h.5a.75.75 0 000-1.5h-.5zM8 9.75A.75.75 0 018.75 9h.5a.75.75 0 010 1.5h-.5A.75.75 0 018 9.75zm-.75.75a1.75 1.75 0 00-1.75 1.75v3c0 .414.336.75.75.75h2.5a.75.75 0 00.75-.75v-3a1.75 1.75 0 00-1.75-1.75h-.5zM7 12.25a.25.25 0 01.25-.25h.5a.25.25 0 01.25.25v2.25H7v-2.25z"></path></svg>
           加速${zip_text}
         </a>
         `;
-                const zip_frag = document.createRange().createContextualFragment(zip_template);
-                el.appendChild(zip_frag);
-            }
-        });
+        const zip_frag = document
+          .createRange()
+          .createContextualFragment(zip_template);
+        el.appendChild(zip_frag);
+      }
     });
+  });
 
-    chrome.runtime.onMessage.addListener((msg, sender, sendResponse) => {
-        if (msg === 'url-update') {
-            const buttonElem = document.querySelector("#fast_github");
-            if (!buttonElem) {
-                addCloneButton();
-                addReleaseButton();
-            }
-        }
-    });
+  chrome.runtime.onMessage.addListener((msg, sender, sendResponse) => {
+    if (msg === "url-update") {
+      const buttonElem = document.querySelector("#fast_github");
+      console.log("buttonElem: ", buttonElem);
+      if (!buttonElem) {
+        addCloneButton();
+        addReleaseButton();
+      }
+    }
+  });
 }
