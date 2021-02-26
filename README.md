@@ -34,7 +34,7 @@ v1.1.0
 
 Github download speeds are generally slow in Asia, and with this plugin the download speeds will be insane!
 
-[![Page Views Count](https://badges.toozhao.com/badges/01EH1R0YMQANV1ACQXTEBK7JCN/green.svg)](https://badges.toozhao.com/badges/01EH1R0YMQANV1ACQXTEBK7JCN/green.svg "Get your own page views count badge on badges.toozhao.com")
+[![Page Views Count](https://badges.toozhao.com/badges/01EH1R0YMQANV1ACQXTEBK7JCN/green.svg)](https://badges.toozhao.com/stats/01EH1R0YMQANV1ACQXTEBK7JCN "Page Views Count")
 
 # Download plugin
 
@@ -109,7 +109,7 @@ v1.1.0
 
 国内 Github 下载很慢，用上了这个插件后，下载速度嗖嗖嗖的~！
 
-[![Page Views Count](https://badges.toozhao.com/badges/01EH1R0YMQANV1ACQXTEBK7JCN/green.svg)](https://badges.toozhao.com/badges/01EH1R0YMQANV1ACQXTEBK7JCN/green.svg "Get your own page views count badge on badges.toozhao.com")
+[![Page Views Count](https://badges.toozhao.com/badges/01EH1R0YMQANV1ACQXTEBK7JCN/green.svg)](https://badges.toozhao.com/stats/01EH1R0YMQANV1ACQXTEBK7JCN/green.svg "Page Views Count")
 
 # 下载插件
 
