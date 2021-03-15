@@ -25,10 +25,12 @@ const url = new URL(window.location.href);
 const path = url.pathname.split("/").slice(1, 3).join("/");
 const [github_auth_name, git_name] = url.pathname.split("/").slice(1, 3);
 
-window.setTimeout(function () {
-  addCloneButton();
-  addReleaseButton();
-}, 600);
+// window.setTimeout(function () {
+
+// }, 600);
+
+addCloneButton();
+addReleaseButton();
 
 //添加克隆按钮
 function addCloneButton() {
@@ -170,14 +172,14 @@ function addReleaseButton() {
     });
   });
 
-  chrome.runtime.onMessage.addListener((msg, sender, sendResponse) => {
-    if (msg === "url-update") {
-      const buttonElem = document.querySelector("#fast_github");
-      console.log("buttonElem: ", buttonElem);
-      if (!buttonElem) {
-        addCloneButton();
-        addReleaseButton();
-      }
-    }
-  });
+  // chrome.runtime.onMessage.addListener((msg, sender, sendResponse) => {
+  //   if (msg === "url-update") {
+  //     const buttonElem = document.querySelector("#fast_github");
+  //     console.log("buttonElem: ", buttonElem);
+  //     if (!buttonElem) {
+  //       addCloneButton();
+  //       addReleaseButton();
+  //     }
+  //   }
+  // });
 }
