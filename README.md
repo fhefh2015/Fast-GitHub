@@ -1,3 +1,9 @@
+# Fast-GitHub
+
+![Chrome Web Store](https://img.shields.io/chrome-web-store/v/mfnkflidjnladnkldfonnaicljppahpg?style=for-the-badge) ![Chrome Web Store](https://img.shields.io/chrome-web-store/users/mfnkflidjnladnkldfonnaicljppahpg?style=for-the-badge)
+
+-------
+
 # Version
 
 v1.2.0
