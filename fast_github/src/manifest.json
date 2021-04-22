@@ -39,7 +39,5 @@
       "run_at": "document_end"
     }
   ],
-  "permissions": [
-    "activeTab"
-  ]
+  "permissions": []
 }
