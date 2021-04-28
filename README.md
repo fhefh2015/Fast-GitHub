@@ -23,11 +23,11 @@ Github download speeds are generally slow in Asia, and with this plugin the down
 
 [![alt text](https://i.loli.net/2021/04/23/IqpU7COKQvzrcyG.png "title")](https://chrome.google.com/webstore/detail/github%E5%8A%A0%E9%80%9F/mfnkflidjnladnkldfonnaicljppahpg?hl=zh-CN&authuser=1)
 
+[![alt text](https://i.loli.net/2021/04/23/SKsywoGWg1HvEja.png "title")](https://apps.apple.com/cn/app/fastgithub/id1564025982?mt=12)
+
 # Come to soon
 
 [![alt text](https://i.loli.net/2021/04/23/EnS3eDi4I86Yv2N.png "title")]()
-
-[![alt text](https://i.loli.net/2021/04/23/SKsywoGWg1HvEja.png "title")]()
 
 [![alt text](https://i.loli.net/2021/04/23/4wGaRTisEdcBnIt.png "title")]()
 
@@ -112,11 +112,11 @@ Fix the problem that 404 cannot be downloaded
 
 [![alt text](https://i.loli.net/2021/04/23/IqpU7COKQvzrcyG.png "title")](https://chrome.google.com/webstore/detail/github%E5%8A%A0%E9%80%9F/mfnkflidjnladnkldfonnaicljppahpg?hl=zh-CN&authuser=1)
 
+[![alt text](https://i.loli.net/2021/04/23/SKsywoGWg1HvEja.png "title")](https://apps.apple.com/cn/app/fastgithub/id1564025982?mt=12)
+
 # 预计上线
 
 [![alt text](https://i.loli.net/2021/04/23/EnS3eDi4I86Yv2N.png "title")]()
-
-[![alt text](https://i.loli.net/2021/04/23/SKsywoGWg1HvEja.png "title")]()
 
 [![alt text](https://i.loli.net/2021/04/23/4wGaRTisEdcBnIt.png "title")]()
 
