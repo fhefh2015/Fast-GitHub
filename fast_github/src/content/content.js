@@ -17,8 +17,27 @@ const fast_git_ssh_url = "git@hub.fastgit.org:";
 const url = new URL(window.location.href);
 const path = url.pathname.split("/").slice(1, 4);
 const [github_auth_name, git_name, issues] = path;
+const getMainOrMaster = getMainOrMasterHref()
+let speedURL = `https://github.com${getMainOrMaster}`;
+
+if (getMainOrMaster) {
+    speedURL = `${cf_url}${speedURL}`
+}
+
 
 main();
+
+function getMainOrMasterHref() {
+    const elems = document.querySelectorAll(".Box-row a");
+    for (let i = 0; i < elems.length; i++) {
+        const item = elems[i];
+        if (item && item.text.trim() == "Download ZIP") {
+            return item.getAttribute("href")
+        }
+    }
+
+    return false;
+}
 
 function main() {
 
@@ -113,7 +132,7 @@ function addCloneButton() {
                   </div>
               </div>
               <div class="mt-2 d-flex" style="text-align:center;">
-                <a class="flex-1 btn btn-outline get-repo-btn " rel="nofollow" href="${cf_url}/https://github.com/${github_auth_name}/${git_name}/archive/refs/heads/main.zip">
+                <a class="flex-1 btn btn-outline get-repo-btn " rel="nofollow" href="${speedURL}">
                     加速下载ZIP
                 </a>
               </div>
