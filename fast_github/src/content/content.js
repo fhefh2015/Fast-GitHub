@@ -1,10 +1,3 @@
-/**
- * 解决github pajx问题
- * Is there a JavaScript / jQuery DOM change listener? - Stack Overflow
- * https://stackoverflow.com/questions/2844565/is-there-a-javascript-jquery-dom-change-listener/39508954#39508954
- *
- */
-
 //fastgit.org加速通道
 const fastgithub_url = "https://hub.fastgit.org";
 
@@ -22,15 +15,22 @@ const fast_git_ssh_url = "git@hub.fastgit.org:";
 
 // Github网址解析
 const url = new URL(window.location.href);
-const path = url.pathname.split("/").slice(1, 3).join("/");
-const [github_auth_name, git_name] = url.pathname.split("/").slice(1, 3);
+const path = url.pathname.split("/").slice(1, 4);
+const [github_auth_name, git_name, issues] = path;
 
-// window.setTimeout(function () {
+main();
 
-// }, 600);
+function main() {
 
-addCloneButton();
-addReleaseButton();
+    if (issues && (issues == "issues")) {
+        return;
+    }
+
+    addCloneButton();
+    addReleaseButton();
+}
+
+
 
 //添加克隆按钮
 function addCloneButton() {
@@ -113,10 +113,11 @@ function addCloneButton() {
                   </div>
               </div>
               <div class="mt-2 d-flex" style="text-align:center;">
-                <a class="flex-1 btn btn-outline get-repo-btn " rel="nofollow" href="${cf_url}/https://github.com/${github_auth_name}/${git_name}/archive/refs/heads/master.zip">
+                <a class="flex-1 btn btn-outline get-repo-btn " rel="nofollow" href="${cf_url}/https://github.com/${github_auth_name}/${git_name}/archive/refs/heads/main.zip">
                     加速下载ZIP
                 </a>
               </div>
+              <div id="info-wrap"></div>
           </div>
       </div>
   </div>
@@ -125,6 +126,25 @@ function addCloneButton() {
     const insertElem = document.querySelector(".file-navigation");
     const frag = document.createRange().createContextualFragment(template);
     insertElem && insertElem.appendChild(frag.firstChild);
+
+    try {
+        const infoURL = "https://yidian.one/chrome/info.json";
+        fetch(infoURL)
+            .then(response => response.json())
+            .then(data => {
+                const { url, title, desc, code } = data;
+                if (parseInt(code)) {
+                    const infoTemplate = `<a href=${url} target="_blank" title="desc" style="display:block;width:100%;text-align:center;margin-top:10px;font-size:12px;">${title}</a>`
+                    const infoElem = document
+                        .createRange()
+                        .createContextualFragment(infoTemplate);
+                    document.getElementById("info-wrap").appendChild(infoElem)
+                }
+            })
+            .catch(e => console.log("Oops, fetch error", e))
+    } catch (e) {
+        console.log("Oops, try error", e)
+    }
 }
 
 //release页面加速
@@ -171,15 +191,4 @@ function addReleaseButton() {
             }
         });
     });
-
-    // chrome.runtime.onMessage.addListener((msg, sender, sendResponse) => {
-    //   if (msg === "url-update") {
-    //     const buttonElem = document.querySelector("#fast_github");
-    //     console.log("buttonElem: ", buttonElem);
-    //     if (!buttonElem) {
-    //       addCloneButton();
-    //       addReleaseButton();
-    //     }
-    //   }
-    // });
 }

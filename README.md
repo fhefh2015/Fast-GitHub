@@ -25,9 +25,9 @@ Github download speeds are generally slow in Asia, and with this plugin the down
 
 [![alt text](https://i.loli.net/2021/04/23/SKsywoGWg1HvEja.png "title")](https://apps.apple.com/cn/app/fastgithub/id1564025982?mt=12)
 
-# Come to soon
+[![alt text](https://i.loli.net/2021/04/23/EnS3eDi4I86Yv2N.png "title")](https://microsoftedge.microsoft.com/addons/detail/github%E5%8A%A0%E9%80%9F/alhnbdjjbokpmilgemopoomnldpejihb)
 
-[![alt text](https://i.loli.net/2021/04/23/EnS3eDi4I86Yv2N.png "title")]()
+# Come to soon
 
 [![alt text](https://i.loli.net/2021/04/23/4wGaRTisEdcBnIt.png "title")]()
 
@@ -96,6 +96,13 @@ v.1.2.4
 
 Fix the problem that 404 cannot be downloaded
 
+v1.2.5
+Fixed an issue where the "加速" button appeared on the Issue page
+Add a new plug-in notification feature
+
+v1.2.6
+Fixed a bug in V1.2.5 that prevented the plugin from working properly
+
 ---
 
 # 简介
@@ -114,9 +121,9 @@ Fix the problem that 404 cannot be downloaded
 
 [![alt text](https://i.loli.net/2021/04/23/SKsywoGWg1HvEja.png "title")](https://apps.apple.com/cn/app/fastgithub/id1564025982?mt=12)
 
-# 预计上线
+[![alt text](https://i.loli.net/2021/04/23/EnS3eDi4I86Yv2N.png "title")](https://microsoftedge.microsoft.com/addons/detail/github%E5%8A%A0%E9%80%9F/alhnbdjjbokpmilgemopoomnldpejihb)
 
-[![alt text](https://i.loli.net/2021/04/23/EnS3eDi4I86Yv2N.png "title")]()
+# 预计上线
 
 [![alt text](https://i.loli.net/2021/04/23/4wGaRTisEdcBnIt.png "title")]()
 
@@ -174,11 +181,20 @@ v1.2.0
 2.删除配置页
 
 v1.2.1
+
 修复 GitHub Pjax 问题
 
-v.1.2.2-v1.2.3
+v1.2.2-v1.2.3
 
 修复 bugs
 
-v.1.2.4
+v1.2.4
+
 修复下载 404 问题
+
+v1.2.5
+修复 issue 页面出现加速按钮的问题
+添加新插件通知
+
+v1.2.6
+修复 v1.2.5 的 bug，导致插件无法正常使用
