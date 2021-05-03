@@ -1,0 +1,36 @@
+{
+  "manifest_version": 2,
+  "homepage_url": "https://github.com/fhefh2015/Fast-GitHub",
+  "name": "GitHub加速",
+  "description": "国内Github下载很慢，用上了这个插件后，下载速度嗖嗖嗖的~！’",
+  "version": "1.2.6",
+  "icons": {
+    "16": "icons/icon16.png",
+    "48": "icons/icon48.png",
+    "128": "icons/icon128.png"
+  },
+  "options_page": "",
+  "page_action": {
+    "default_icon": {
+      "38": "icons/icon38.png"
+    },
+    "default_title": "GitHub加速",
+    "default_popup": ""
+  },
+  "options_ui": {
+    "page": "options.html",
+    "open_in_tab": true
+  },
+  "content_scripts": [
+    {
+      "matches": [
+        "*://github.com/*"
+      ],
+      "js": [
+        "js/content.js"
+      ],
+      "run_at": "document_end"
+    }
+  ],
+  "permissions": []
+}
