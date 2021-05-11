@@ -27,9 +27,8 @@ Github download speeds are generally slow in Asia, and with this plugin the down
 
 [![alt text](https://i.loli.net/2021/04/23/EnS3eDi4I86Yv2N.png "title")](https://microsoftedge.microsoft.com/addons/detail/github%E5%8A%A0%E9%80%9F/alhnbdjjbokpmilgemopoomnldpejihb)
 
-# Come to soon
+[![alt text](https://i.loli.net/2021/04/23/4wGaRTisEdcBnIt.png "title")](https://addons.mozilla.org/en-US/firefox/addon/fastgithub/)
 
-[![alt text](https://i.loli.net/2021/04/23/4wGaRTisEdcBnIt.png "title")]()
 
 # How to use SSH channels
 
@@ -126,9 +125,7 @@ Fixed a bug in V1.2.5 that prevented the plugin from working properly
 
 [![alt text](https://i.loli.net/2021/04/23/EnS3eDi4I86Yv2N.png "title")](https://microsoftedge.microsoft.com/addons/detail/github%E5%8A%A0%E9%80%9F/alhnbdjjbokpmilgemopoomnldpejihb)
 
-# 预计上线
-
-[![alt text](https://i.loli.net/2021/04/23/4wGaRTisEdcBnIt.png "title")]()
+[![alt text](https://i.loli.net/2021/04/23/4wGaRTisEdcBnIt.png "title")](https://addons.mozilla.org/en-US/firefox/addon/fastgithub/)
 
 # 如何使用 SSH 通道
 
