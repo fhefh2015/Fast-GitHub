@@ -38,11 +38,12 @@ function download() {
     // console.log("source: ", source.getAttribute('src'));
     const fileName = `${git_name}.zip`;
     const src = `${cf_url}https://github.com${getMainOrMasterHref()}`;
-    fetch(src)
-        .then(response => response.blob())
-        .then(function (myBlob) {
-            downLoadZip(myBlob, fileName)
-        });
+    window.location.href = src;
+    // fetch(src)
+    //     .then(response => response.blob())
+    //     .then(function (myBlob) {
+    //         downLoadZip(myBlob, fileName)
+    //     });
     // createAndDownloadFile(fileName, src);
 }
 
