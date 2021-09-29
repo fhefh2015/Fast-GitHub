@@ -21,14 +21,8 @@ Github download speeds are generally slow in Asia, and with this plugin the down
 
 # Download
 
-[![alt text](https://i.loli.net/2021/04/23/IqpU7COKQvzrcyG.png "title")](https://chrome.google.com/webstore/detail/github%E5%8A%A0%E9%80%9F/mfnkflidjnladnkldfonnaicljppahpg?hl=zh-CN&authuser=1)
-
-[![alt text](https://i.loli.net/2021/04/23/SKsywoGWg1HvEja.png "title")](https://apps.apple.com/cn/app/fastgithub/id1564025982?mt=12)
-
-[![alt text](https://i.loli.net/2021/04/23/EnS3eDi4I86Yv2N.png "title")](https://microsoftedge.microsoft.com/addons/detail/github%E5%8A%A0%E9%80%9F/alhnbdjjbokpmilgemopoomnldpejihb)
-
-[![alt text](https://i.loli.net/2021/04/23/4wGaRTisEdcBnIt.png "title")](https://addons.mozilla.org/en-US/firefox/addon/fastgithub/)
-
+| [![alt text](https://i.loli.net/2021/04/23/IqpU7COKQvzrcyG.png "title")](https://chrome.google.com/webstore/detail/github%E5%8A%A0%E9%80%9F/mfnkflidjnladnkldfonnaicljppahpg?hl=zh-CN&authuser=1) | [![alt text](https://i.loli.net/2021/04/23/SKsywoGWg1HvEja.png "title")](https://apps.apple.com/cn/app/fastgithub/id1564025982?mt=12) | [![alt text](https://i.loli.net/2021/04/23/EnS3eDi4I86Yv2N.png "title")](https://microsoftedge.microsoft.com/addons/detail/github%E5%8A%A0%E9%80%9F/alhnbdjjbokpmilgemopoomnldpejihb) | [![alt text](https://i.loli.net/2021/04/23/4wGaRTisEdcBnIt.png "title")](https://addons.mozilla.org/en-US/firefox/addon/fastgithub/) |
+| :------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------------------------: | :-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------: | ------------------------------------------------------------------------------------------------------------------------------------ |
 
 # How to use SSH channels
 
@@ -55,56 +49,6 @@ ssh -T git@git.zhlh6.cn
 You've successfully authenticated, but GitHub does not provide shell access
 ```
 
-# Version
-
-v1.1.0
-
-1.add fusion mode, please check in plugin options
-
-2.Fix custom accelerated URL problem
-
-3.Fix UI display problems
-
-v1.1.1
-
-1.Github part of the page structure modified to accommodate the new layout.
-
-Known issues
-
-Octotree 6.0.0 has an impact on GitHub page layouts
-
-Solution
-
-Disable Octotree or use <a href="https://chrome.google.com/webstore/detail/git-master/klmeolbcejnhefkapdchfhlhhjgobhmo" target="_blank">Git Master</a>
-
-v1.2.0
-
-1.Disabled mixed mode, separate acceleration button option
-
-2.Remove configuration page
-
-v1.2.1
-
-Fix Github Pjax issue
-
-v.1.2.2-v1.2.3
-
-Fix bugs
-
-v.1.2.4
-
-Fix the problem that 404 cannot be downloaded
-
-v1.2.5
-
-Fixed an issue where the "加速" button appeared on the Issue page
-
-Add a new plug-in notification feature
-
-v1.2.6
-
-Fixed a bug in V1.2.5 that prevented the plugin from working properly
-
 ---
 
 # 简介
@@ -119,13 +63,8 @@ Fixed a bug in V1.2.5 that prevented the plugin from working properly
 
 # 下载插件
 
-[![alt text](https://i.loli.net/2021/04/23/IqpU7COKQvzrcyG.png "title")](https://chrome.google.com/webstore/detail/github%E5%8A%A0%E9%80%9F/mfnkflidjnladnkldfonnaicljppahpg?hl=zh-CN&authuser=1)
-
-[![alt text](https://i.loli.net/2021/04/23/SKsywoGWg1HvEja.png "title")](https://apps.apple.com/cn/app/fastgithub/id1564025982?mt=12)
-
-[![alt text](https://i.loli.net/2021/04/23/EnS3eDi4I86Yv2N.png "title")](https://microsoftedge.microsoft.com/addons/detail/github%E5%8A%A0%E9%80%9F/alhnbdjjbokpmilgemopoomnldpejihb)
-
-[![alt text](https://i.loli.net/2021/04/23/4wGaRTisEdcBnIt.png "title")](https://addons.mozilla.org/en-US/firefox/addon/fastgithub/)
+| [![alt text](https://i.loli.net/2021/04/23/IqpU7COKQvzrcyG.png "title")](https://chrome.google.com/webstore/detail/github%E5%8A%A0%E9%80%9F/mfnkflidjnladnkldfonnaicljppahpg?hl=zh-CN&authuser=1) | [![alt text](https://i.loli.net/2021/04/23/SKsywoGWg1HvEja.png "title")](https://apps.apple.com/cn/app/fastgithub/id1564025982?mt=12) | [![alt text](https://i.loli.net/2021/04/23/EnS3eDi4I86Yv2N.png "title")](https://microsoftedge.microsoft.com/addons/detail/github%E5%8A%A0%E9%80%9F/alhnbdjjbokpmilgemopoomnldpejihb) | [![alt text](https://i.loli.net/2021/04/23/4wGaRTisEdcBnIt.png "title")](https://addons.mozilla.org/en-US/firefox/addon/fastgithub/) |
+| :------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------------------------: | :-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------: | ------------------------------------------------------------------------------------------------------------------------------------ |
 
 # 如何使用 SSH 通道
 
@@ -151,53 +90,3 @@ ssh -T git@git.zhlh6.cn
 # 成功
 You've successfully authenticated, but GitHub does not provide shell access
 ```
-
-# 版本
-
-v1.1.0
-
-1.新增融合模式，请在插件选项中查看
-
-2.修复自定义加速网址问题
-
-3.修复界面显示问题
-
-v1.1.1
-
-Github 部分网页结构修改 适配新布局
-
-已知问题
-
-Octotree 6.0.0 对 GitHub 页面布局有影响
-
-解决
-
-禁用 Octotree 或者使用<a href="https://chrome.google.com/webstore/detail/git-master/klmeolbcejnhefkapdchfhlhhjgobhmo" target="_blank">Git Master</a>
-
-v1.2.0
-
-1.混合模式失效,单独列出加速按钮选项
-
-2.删除配置页
-
-v1.2.1
-
-修复 GitHub Pjax 问题
-
-v1.2.2-v1.2.3
-
-修复 bugs
-
-v1.2.4
-
-修复下载 404 问题
-
-v1.2.5
-
-修复 issue 页面出现加速按钮的问题
-
-添加新插件通知
-
-v1.2.6
-
-修复 v1.2.5 的 bug，导致插件无法正常使用
