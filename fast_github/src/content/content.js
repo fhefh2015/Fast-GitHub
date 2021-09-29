@@ -20,11 +20,6 @@ const [github_auth_name, git_name, issues] = path;
 const getMainOrMaster = getMainOrMasterHref()
 let speedURL = `https://github.com${getMainOrMaster}`;
 
-if (getMainOrMaster) {
-    speedURL = `${cf_url}${speedURL}`
-}
-
-
 main();
 
 function getMainOrMasterHref() {
@@ -35,8 +30,34 @@ function getMainOrMasterHref() {
             return item.getAttribute("href")
         }
     }
-
     return false;
+}
+
+function download() {
+    const source = document.querySelector('video source');
+    // console.log("source: ", source.getAttribute('src'));
+    const fileName = `${git_name}.zip`;
+    const src = `${cf_url}https://github.com${getMainOrMasterHref()}`;
+    fetch(src)
+        .then(response => response.blob())
+        .then(function (myBlob) {
+            downLoadZip(myBlob, fileName)
+        });
+    // createAndDownloadFile(fileName, src);
+}
+
+function downLoadZip(blob, name) {
+    const element = document.createElement("a");
+    element.style.display = "none";
+    document.body.appendChild(element);
+
+    element.href = window.URL.createObjectURL(blob);
+    element.setAttribute("target", "_blank");
+    element.setAttribute("download", name);
+    element.click();
+
+    window.URL.revokeObjectURL(element.href);
+    document.body.removeChild(element);
 }
 
 function main() {
@@ -44,6 +65,16 @@ function main() {
     if (issues && (issues == "issues")) {
         return;
     }
+
+    const mutationObserver = new MutationObserver(() => {
+
+        const id = document.getElementById("fast_github");
+
+        if (!id) {
+            addCloneButton();
+        }
+    });
+    mutationObserver.observe(document.body, { childList: true, subtree: true });
 
     addCloneButton();
     addReleaseButton();
@@ -132,9 +163,9 @@ function addCloneButton() {
                   </div>
               </div>
               <div class="mt-2 d-flex" style="text-align:center;">
-                <a class="flex-1 btn btn-outline get-repo-btn " rel="nofollow" href="${speedURL}">
+                <div class="flex-1 btn btn-outline get-repo-btn" id="downloadZIP">
                     加速下载ZIP
-                </a>
+                </div>
               </div>
               <div id="info-wrap"></div>
           </div>
@@ -146,7 +177,13 @@ function addCloneButton() {
     const frag = document.createRange().createContextualFragment(template);
     insertElem && insertElem.appendChild(frag.firstChild);
 
+
+
     try {
+        document.getElementById('downloadZIP').addEventListener('click', function () {
+            download();
+        }, false);
+
         const infoURL = "https://yidian.one/chrome/info.json";
         fetch(infoURL)
             .then(response => response.json())
