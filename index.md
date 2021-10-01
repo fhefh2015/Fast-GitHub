@@ -25,7 +25,7 @@ Github download speeds are generally slow in Asia, and with this plugin the down
 <tbody>
 <tr>
 <td>
-<a href="https://chrome.google.com/webstore/detail/github%E5%8A%A0%E9%80%9F/mfnkflidjnladnkldfonnaicljppahpg?hl=zh-CN&authuser=1" target="_blank">
+<a href="https://chrome.google.com/webstore/detail/github%E5%8A%A0%E9%80%9F/mfnkflidjnladnkldfonnaicljppahpg" target="_blank">
         <img src="https://i.loli.net/2021/04/23/IqpU7COKQvzrcyG.png" />
       </a>
 </td>
@@ -88,7 +88,7 @@ You've successfully authenticated, but GitHub does not provide shell access
 <tbody>
 <tr>
 <td>
-<a href="https://chrome.google.com/webstore/detail/github%E5%8A%A0%E9%80%9F/mfnkflidjnladnkldfonnaicljppahpg?hl=zh-CN&authuser=1" target="_blank">
+<a href="https://chrome.google.com/webstore/detail/github%E5%8A%A0%E9%80%9F/mfnkflidjnladnkldfonnaicljppahpg" target="_blank">
         <img src="https://i.loli.net/2021/04/23/IqpU7COKQvzrcyG.png" />
       </a>
 </td>
