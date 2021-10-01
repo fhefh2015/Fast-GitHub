@@ -21,8 +21,29 @@ Github download speeds are generally slow in Asia, and with this plugin the down
 
 # Download
 
-| [![alt text](https://i.loli.net/2021/04/23/IqpU7COKQvzrcyG.png "title")](https://chrome.google.com/webstore/detail/github%E5%8A%A0%E9%80%9F/mfnkflidjnladnkldfonnaicljppahpg?hl=zh-CN&authuser=1) | [![alt text](https://i.loli.net/2021/04/23/SKsywoGWg1HvEja.png "title")](https://apps.apple.com/cn/app/fastgithub/id1564025982?mt=12) | [![alt text](https://i.loli.net/2021/04/23/EnS3eDi4I86Yv2N.png "title")](https://microsoftedge.microsoft.com/addons/detail/github%E5%8A%A0%E9%80%9F/alhnbdjjbokpmilgemopoomnldpejihb) | [![alt text](https://i.loli.net/2021/04/23/4wGaRTisEdcBnIt.png "title")](https://addons.mozilla.org/en-US/firefox/addon/fastgithub/) |
-| :------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------------------------: | :-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------: | ------------------------------------------------------------------------------------------------------------------------------------ |
+<table>
+<tbody>
+<tr>
+<td>
+<a href="https://chrome.google.com/webstore/detail/github%E5%8A%A0%E9%80%9F/mfnkflidjnladnkldfonnaicljppahpg" target="_blank">
+        <img src="https://i.loli.net/2021/04/23/IqpU7COKQvzrcyG.png" />
+      </a>
+</td>
+<td><a href="https://apps.apple.com/cn/app/fastgithub/id1564025982?mt=12" target="_blank">
+        <img src="https://i.loli.net/2021/04/23/SKsywoGWg1HvEja.png" />
+      </a></td>
+<td>
+<a href="https://microsoftedge.microsoft.com/addons/detail/github%E5%8A%A0%E9%80%9F/alhnbdjjbokpmilgemopoomnldpejihb" target="_blank">
+        <img src="https://i.loli.net/2021/04/23/EnS3eDi4I86Yv2N.png" />
+      </a>
+</td>
+<td><a href="https://addons.mozilla.org/en-US/firefox/addon/fastgithub/" target="_blank">
+        <img src="https://i.loli.net/2021/04/23/4wGaRTisEdcBnIt.png" />
+      </a></td>
+</tr>
+</tbody>
+</table>
+
 
 # How to use SSH channels
 
@@ -63,8 +84,29 @@ You've successfully authenticated, but GitHub does not provide shell access
 
 # 下载插件
 
-| [![alt text](https://i.loli.net/2021/04/23/IqpU7COKQvzrcyG.png "title")](https://chrome.google.com/webstore/detail/github%E5%8A%A0%E9%80%9F/mfnkflidjnladnkldfonnaicljppahpg?hl=zh-CN&authuser=1) | [![alt text](https://i.loli.net/2021/04/23/SKsywoGWg1HvEja.png "title")](https://apps.apple.com/cn/app/fastgithub/id1564025982?mt=12) | [![alt text](https://i.loli.net/2021/04/23/EnS3eDi4I86Yv2N.png "title")](https://microsoftedge.microsoft.com/addons/detail/github%E5%8A%A0%E9%80%9F/alhnbdjjbokpmilgemopoomnldpejihb) | [![alt text](https://i.loli.net/2021/04/23/4wGaRTisEdcBnIt.png "title")](https://addons.mozilla.org/en-US/firefox/addon/fastgithub/) |
-| :------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------------------------: | :-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------: | ------------------------------------------------------------------------------------------------------------------------------------ |
+<table>
+<tbody>
+<tr>
+<td>
+<a href="https://chrome.google.com/webstore/detail/github%E5%8A%A0%E9%80%9F/mfnkflidjnladnkldfonnaicljppahpg" target="_blank">
+        <img src="https://i.loli.net/2021/04/23/IqpU7COKQvzrcyG.png" />
+      </a>
+</td>
+<td><a href="https://apps.apple.com/cn/app/fastgithub/id1564025982?mt=12" target="_blank">
+        <img src="https://i.loli.net/2021/04/23/SKsywoGWg1HvEja.png" />
+      </a></td>
+<td>
+<a href="https://microsoftedge.microsoft.com/addons/detail/github%E5%8A%A0%E9%80%9F/alhnbdjjbokpmilgemopoomnldpejihb" target="_blank">
+        <img src="https://i.loli.net/2021/04/23/EnS3eDi4I86Yv2N.png" />
+      </a>
+</td>
+<td><a href="https://addons.mozilla.org/en-US/firefox/addon/fastgithub/" target="_blank">
+        <img src="https://i.loli.net/2021/04/23/4wGaRTisEdcBnIt.png" />
+      </a></td>
+</tr>
+</tbody>
+</table>
+
 
 # 如何使用 SSH 通道
 
