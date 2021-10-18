@@ -13,6 +13,10 @@ Github download speeds are generally slow in Asia, and with this plugin the down
 
 ---
 
+# AD
+
+Manage Your Github Star: [GitHubTags.com](https://githubtags.com)
+
 # Preview
 
 ![MNOt8347RDGmnjo](https://i.loli.net/2021/04/23/MNOt8347RDGmnjo.png)
