@@ -14,11 +14,29 @@ const ssh_url = "git@git.zhlh6.cn:";
 const fast_git_ssh_url = "git@hub.fastgit.org:";
 
 // Github网址解析
-const url = new URL(window.location.href);
-const path = url.pathname.split("/").slice(1, 4);
+const path = getURLPath();
 const [github_auth_name, git_name, issues] = path;
-const getMainOrMaster = getMainOrMasterHref()
-let speedURL = `https://github.com${getMainOrMaster}`;
+let isAddTag = false;
+let isAddRelease = false;
+
+document.addEventListener("pjax:end", function () {
+    // run code/call function
+    const [f1, f2, f3] = getURLPath();
+
+    if (f3 === undefined) {
+        addCloneButton();
+    }
+
+    switch (f3) {
+        case "tags":
+            addTagButton();
+            break;
+        case "releases":
+            addReleaseButton();
+            break;
+    }
+});
+
 
 main();
 
@@ -63,21 +81,28 @@ function downLoadZip(blob, name) {
 
 function main() {
 
-    if (issues && (issues == "issues")) {
-        return;
+    // if (issues && (issues === "issues")) {
+    //     return;
+    // }
+
+    // const mutationObserver = new MutationObserver(() => {
+
+    //     const id = document.getElementById("fast_github");
+
+    //     if (!id) {
+    //         addCloneButton();
+    //     }
+    // });
+
+    // mutationObserver.observe(document.body, { childList: true, subtree: true });
+
+    const id = document.getElementById("fast_github");
+
+    if (!id) {
+        addCloneButton();
     }
 
-    const mutationObserver = new MutationObserver(() => {
-
-        const id = document.getElementById("fast_github");
-
-        if (!id) {
-            addCloneButton();
-        }
-    });
-    mutationObserver.observe(document.body, { childList: true, subtree: true });
-
-    addCloneButton();
+    addTagButton();
     addReleaseButton();
 }
 
@@ -181,7 +206,8 @@ function addCloneButton() {
 
 
     try {
-        document.getElementById('downloadZIP').addEventListener('click', function () {
+        const downloadBtn = document.getElementById('downloadZIP');
+        downloadBtn && downloadBtn.addEventListener('click', function () {
             download();
         }, false);
 
@@ -198,16 +224,16 @@ function addCloneButton() {
                     document.getElementById("info-wrap").appendChild(infoElem)
                 }
             })
-            .catch(e => console.log("Oops, fetch error", e))
+            .catch(e => console.log("Oops, fetch error"))
     } catch (e) {
-        console.log("Oops, try error", e)
+        console.log("Oops, try error")
     }
 }
 
 //release页面加速
 function addReleaseButton() {
     const releaseElems = document.querySelectorAll(
-        ".release .Box--condensed .Box-body"
+        ".repository-content .Box--condensed .Box-row"
     );
 
     releaseElems.forEach(function (elem) {
@@ -226,6 +252,10 @@ function addReleaseButton() {
         elem.appendChild(frag);
     });
 
+    isAddRelease = true;
+}
+
+function addTagButton() {
     const zipedElems = document.querySelectorAll(".repository-content .commit");
     zipedElems.forEach(function (elem, index) {
         const elems = elem.querySelectorAll("ul .d-inline-block");
@@ -247,5 +277,13 @@ function addReleaseButton() {
                 el.appendChild(zip_frag);
             }
         });
+
+        isAddTag = true;
     });
+}
+
+function getURLPath() {
+    const url = new URL(window.location.href);
+    const path = url.pathname.split("/").slice(1, 4);
+    return path;
 }
