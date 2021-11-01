@@ -13,16 +13,6 @@ Github download speeds are generally slow in Asia, and with this plugin the down
 
 ---
 
-# AD
-
-Manage Your Github Star: [GitHubTags.com](https://githubtags.com)
-
-# Preview
-
-![MNOt8347RDGmnjo](https://i.loli.net/2021/04/23/MNOt8347RDGmnjo.png)
-
-![9UPXkGsHzw5hiru](https://i.loli.net/2021/04/23/9UPXkGsHzw5hiru.png)
-
 # Download
 
 <table>
@@ -47,6 +37,17 @@ Manage Your Github Star: [GitHubTags.com](https://githubtags.com)
 </tr>
 </tbody>
 </table>
+
+
+# AD
+
+Manage Your Github Star: [GitHubTags.com](https://githubtags.com)
+
+# Preview
+
+![MNOt8347RDGmnjo](https://i.loli.net/2021/04/23/MNOt8347RDGmnjo.png)
+
+![9UPXkGsHzw5hiru](https://i.loli.net/2021/04/23/9UPXkGsHzw5hiru.png)
 
 
 # How to use SSH channels
@@ -80,12 +81,6 @@ You've successfully authenticated, but GitHub does not provide shell access
 
 国内 Github 下载很慢，用上了这个插件后，下载速度嗖嗖嗖的~！
 
-# 预览
-
-![MNOt8347RDGmnjo](https://i.loli.net/2021/04/23/MNOt8347RDGmnjo.png)
-
-![9UPXkGsHzw5hiru](https://i.loli.net/2021/04/23/9UPXkGsHzw5hiru.png)
-
 # 下载插件
 
 <table>
@@ -110,6 +105,12 @@ You've successfully authenticated, but GitHub does not provide shell access
 </tr>
 </tbody>
 </table>
+
+# 预览
+
+![MNOt8347RDGmnjo](https://i.loli.net/2021/04/23/MNOt8347RDGmnjo.png)
+
+![9UPXkGsHzw5hiru](https://i.loli.net/2021/04/23/9UPXkGsHzw5hiru.png)
 
 
 # 如何使用 SSH 通道
