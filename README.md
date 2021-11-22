@@ -5,6 +5,10 @@
 
 ---
 
+# Temporarily unavailable 暂时无法使用
+
+https://github.com/fhefh2015/Fast-GitHub/issues/37
+
 # INTRODUCTION
 
 Github download speeds are generally slow in Asia, and with this plugin the download speeds will be insane!
