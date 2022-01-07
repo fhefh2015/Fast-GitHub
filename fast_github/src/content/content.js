@@ -7,6 +7,7 @@ main();
 
 
 async function main() {
+    const fastgithub_button_name = "fast_github";
 
     //fastgit.org加速通道
     const fastgithub_url = "https://hub.fastgit.org";
@@ -103,20 +104,20 @@ async function main() {
     // });
 
     // mutationObserver.observe(document.body, { childList: true, subtree: true });
-
-    const id = document.getElementById("fast_github");
-
-    if (!id) {
-        addCloneButton();
-    }
-
+    addCloneButton();
     addTagButton();
     addReleaseButton();
 
 
     //添加克隆按钮
     function addCloneButton() {
-        const template = `<span class="d-flex" id="fast_github">
+        const id = document.getElementById(fastgithub_button_name);
+
+        if (id) {
+            console.info("clone button has already existed.");
+            return;
+        }
+        const template = `<span class="d-flex" id="${fastgithub_button_name}">
 <details class="get-repo-select-menu js-get-repo-select-menu  position-relative details-overlay details-reset">
   <summary class="btn ml-2 btn-primary">
       加速
