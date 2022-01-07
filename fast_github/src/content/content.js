@@ -28,7 +28,17 @@ async function main() {
 
     // Github网址解析
     const path = getURLPath();
+
+    if (path.length === 0) {
+        return;
+    }
+
     const [github_auth_name, git_name, issues] = path;
+
+    if (issues === "commits") {
+        return;
+    }
+
     let isAddTag = false;
     let isAddRelease = false;
 
@@ -72,7 +82,15 @@ async function main() {
     }
 
     document.addEventListener("pjax:end", function () {
-        // run code/call function
+
+
+
+        const id = document.getElementById("fast_github");
+
+        if (id) {
+            return;
+        }
+
         const [f1, f2, f3] = getURLPath();
 
         if (f3 === undefined) {
@@ -323,6 +341,7 @@ async function main() {
     function getURLPath() {
         const url = new URL(window.location.href);
         const path = url.pathname.split("/").slice(1, 4);
+        console.log("path: ", path);
         return path;
     }
 }
