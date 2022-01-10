@@ -1,11 +1,5 @@
 # FAST-GitHub
 
-
-![Chrome Web Store](https://img.shields.io/chrome-web-store/v/mfnkflidjnladnkldfonnaicljppahpg?style=for-the-badge)
-![Chrome Web Store](https://img.shields.io/chrome-web-store/users/mfnkflidjnladnkldfonnaicljppahpg?style=for-the-badge)
-
-
-
 # 简介
 
 国内 Github 下载很慢，用上了这个插件后，下载速度嗖嗖嗖的~！ 
@@ -16,11 +10,17 @@
 
 # 下载插件
 
+因Chrome开发者账号中的一个插件出现问题，导致所有插件被下架。
+
+现在另外一个账号申请上线，目前审核中，上线后会更新Chrome插件的地址。
+
+很抱歉给大家带来的不便。
+
 <table>
 <tbody>
 <tr>
 <td>
-<a href="https://chrome.google.com/webstore/detail/github%E5%8A%A0%E9%80%9F/mfnkflidjnladnkldfonnaicljppahpg" target="_blank">
+<a href="#" target="_blank">
         <img src="https://i.loli.net/2021/04/23/IqpU7COKQvzrcyG.png" />
       </a>
 </td>
