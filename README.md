@@ -12,7 +12,9 @@
 
 因Chrome开发者账号中的一个插件出现问题，导致所有插件被下架。
 
-现在另外一个账号申请上线，目前审核中，上线后会更新Chrome插件的地址。
+~~现在另外一个账号申请上线，目前审核中，上线后会更新Chrome插件的地址~~
+
+Chrome插件地址已更新。
 
 很抱歉给大家带来的不便。
 
@@ -20,7 +22,7 @@
 <tbody>
 <tr>
 <td>
-<a href="#" target="_blank">
+<a href="https://chrome.google.com/webstore/detail/github加速/ffjjnphohkfckeplcjflmgneebafggej" target="_blank">
         <img src="https://i.loli.net/2021/04/23/IqpU7COKQvzrcyG.png" />
       </a>
 </td>
