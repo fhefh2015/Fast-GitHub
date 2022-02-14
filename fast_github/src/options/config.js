@@ -22,31 +22,31 @@ const saveObjectInLocalStorage = function (obj) {
   });
 };
 
-const defaultURL = "https://github.91chi.fun/";
+const defaultList = ["https://github.91chi.fun/github_proxy"];
 
 export async function config() {
-  const saveBtn = document.getElementById('save_btn');
-  console.log(saveBtn);
-  const settingURL = document.getElementById('customURL');
-  const customURL = await getObjectFromLocalStorage('customURL');
+  const saveBtn = document.getElementById("save_btn");
+  const list = document.getElementById("list");
+  const customList = await getObjectFromLocalStorage("customList");
 
-  console.log("option customURL:", customURL);
-
-  if (customURL) {
-    settingURL.value = customURL;
+  if (customList && customList.length) {
+    list.value = customList.join("\n");
   } else {
-    settingURL.value = defaultURL;
+    list.value = defaultList.join("\n");
   }
 
   saveBtn.onclick = function () {
-    const url = settingURL.value;
-    if (url === "") {
+    const myList = list.value;
+    console.log("list: ", myList);
+
+    if (myList === "") {
       alert("不能为空");
       window.location.reload();
       return;
     }
 
-    saveObjectInLocalStorage({ "customURL": settingURL.value });
+    // saveObjectInLocalStorage({ "customURL": settingURL.value });
+    saveObjectInLocalStorage({ "customList": myList.split("\n") });
     alert("已保存");
   }
 }
