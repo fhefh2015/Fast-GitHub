@@ -28,41 +28,11 @@ Chrome插件地址更新,很抱歉给大家带来的不便。
         <img src="https://i.loli.net/2021/04/23/EnS3eDi4I86Yv2N.png" />
       </a>
 </td>
-<td><a href="https://addons.mozilla.org/en-US/firefox/addon/fastgithub/" target="_blank">
-        <img src="https://i.loli.net/2021/04/23/4wGaRTisEdcBnIt.png" />
-      </a></td>
 </tr>
 </tbody>
 </table>
 
 # 预览
 
-![MNOt8347RDGmnjo](https://i.loli.net/2021/04/23/MNOt8347RDGmnjo.png)
+<img width="1383" alt="CleanShot 2022-02-14 at 14 55 25@2x" src="https://user-images.githubusercontent.com/14891797/153814732-d43dbf95-38a3-4145-ac84-a628bc543509.png">
 
-![9UPXkGsHzw5hiru](https://i.loli.net/2021/04/23/9UPXkGsHzw5hiru.png)
-
-
-# 如何使用 SSH 通道
-
-配置用户配置文件 (`~/.ssh/config`)
-
-```bash
-Host github.com
-	HostName github.com
-	User git
-	IdentityFile 指定密钥认证使用的私钥文件路径
-# 新增如下内容
-Host git.zhlh6.cn
-	HostName git.zhlh6.cn
-	User git
-	IdentityFile 使用github.com的秘钥
-```
-
-测试 SSH 连接
-
-```bash
-ssh -T git@git.zhlh6.cn
-
-# 成功
-You've successfully authenticated, but GitHub does not provide shell access
-```
