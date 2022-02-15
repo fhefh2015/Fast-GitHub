@@ -28,9 +28,6 @@ Chrome插件地址更新,很抱歉给大家带来的不便。
         <img src="https://i.loli.net/2021/04/23/EnS3eDi4I86Yv2N.png" />
       </a>
 </td>
-<td><a href="https://addons.mozilla.org/en-US/firefox/addon/fastgithub/" target="_blank">
-        <img src="https://i.loli.net/2021/04/23/4wGaRTisEdcBnIt.png" />
-      </a></td>
 </tr>
 </tbody>
 </table>
