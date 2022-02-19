@@ -1,11 +1,7 @@
-import {
-    getObjectFromLocalStorage
-} from '../options/config';
 
 main();
 
 async function main() {
-
     const urlInfo = new URL(window.location.href);
     const urlPath = urlInfo.pathname.split("/").slice(1, 4);
 
@@ -15,18 +11,24 @@ async function main() {
         return;
     }
 
-    if (p3 && p3 === "commits" || p3 && p3 === "issues") {
+    if ((p3 && p3 === "commits") || (p3 && p3 === "issues")) {
         return;
     }
 
     let defaultList = ["https://github.91chi.fun/github_proxy"];
-    const customList = await getObjectFromLocalStorage('customList');
-
-    if (customList && customList.length) {
-        defaultList = customList
+    let customList;
+    if (isSafari()) {
+        const localStorageValue = window.localStorage.getItem("customList");
+        customList = localStorageValue ? localStorageValue.split("\n") : [];
+    } else {
+        customList = await getObjectFromLocalStorage("customList");
     }
 
-    let cf_url = ""
+    if (customList && customList.length) {
+        defaultList = customList;
+    }
+
+    let cf_url = "";
     const github_url = urlInfo.origin;
     const [github_author, github_project] = urlPath;
     const github_project_git = `${github_project}.git`;
@@ -34,22 +36,21 @@ async function main() {
     const github_project_url_git = `${github_project_url}.git`;
     const github_proxy = github_project_url_git;
 
-    defaultList.map(item => {
+    defaultList.map((item) => {
         if (item.indexOf("github_proxy") !== -1) {
-            cf_url = item.replace("\/github_proxy", "");
+            cf_url = item.replace("/github_proxy", "");
         }
     });
 
-    console.log("github_url: ", github_url);
-    console.log("github_author: ", github_author);
-    console.log("github_project: ", github_project);
-    console.log("github_project_git: ", github_project_git);
-    console.log("github_project_url: ", github_project_url);
-    console.log("github_project_url_git: ", github_project_url_git);
-    console.log("github_proxy: ", github_proxy);
-    console.log("defaultList: ", defaultList);
-    console.log("cf_url: ", cf_url);
-
+    // console.log("github_url: ", github_url);
+    // console.log("github_author: ", github_author);
+    // console.log("github_project: ", github_project);
+    // console.log("github_project_git: ", github_project_git);
+    // console.log("github_project_url: ", github_project_url);
+    // console.log("github_project_url_git: ", github_project_url_git);
+    // console.log("github_proxy: ", github_proxy);
+    // console.log("defaultList: ", defaultList);
+    // console.log("cf_url: ", cf_url);
 
     document.addEventListener("pjax:end", function () {
         const id = document.getElementById("fast_github");
@@ -92,7 +93,7 @@ async function main() {
         for (let i = 0; i < elems.length; i++) {
             const item = elems[i];
             if (item && item.text.trim() == "Download ZIP") {
-                return item.getAttribute("href")
+                return item.getAttribute("href");
             }
         }
         return false;
@@ -100,7 +101,7 @@ async function main() {
 
     // 点击下载ZIP压缩包
     function download() {
-        const source = document.querySelector('video source');
+        const source = document.querySelector("video source");
         // console.log("source: ", source.getAttribute('src'));
         const fileName = `${github_project}.zip`;
         const src = `${cf_url}/https://github.com${getMainOrMasterHref()}`;
@@ -155,7 +156,7 @@ async function main() {
                                 </div>
                             </div>
                         </div>
-                `
+                `;
             }
         });
 
@@ -168,51 +169,107 @@ async function main() {
             <div class="position-relative">
                 <div class="get-repo-modal dropdown-menu dropdown-menu-sw pb-0 js-toggler-container js-get-repo-modal p-3" style="width: 352px;">
                     <div class="get-repo-modal-options">
-                        <div class="clone-options https-clone-options">
-                            <h4 class="mb-1">加速通道列表</h4>
-                            ${listTemplate}
-                        </div>
-                        <div class="mt-2 d-flex" style="text-align: center;">
-                            <div class="flex-1 btn btn-outline get-repo-btn" id="downloadZIP">
-                                加速下载ZIP
+                        <div class="fast-github-list-wrap" id="fastGithubListWrap">
+                            <div class="clone-options https-clone-options">
+                                <h4 class="mb-1">加速通道列表</h4>
+                                ${listTemplate}
                             </div>
+                            <div class="mt-2 d-flex" style="text-align: center;">
+                                <div class="flex-1 btn btn-outline get-repo-btn" id="settingConfigButton" style="display:${isSafari() ? "block" : "none"}">
+                                    设置
+                                </div>
+                            </div>
+                            <div class="mt-2 d-flex" style="text-align: center;">
+                                <div class="flex-1 btn btn-outline get-repo-btn" id="downloadZIP">
+                                    加速下载ZIP
+                                </div>
+                            </div>
+                            <div id="info-wrap"></div>
                         </div>
-                        <div id="info-wrap"></div>
+                        <div class="fast-github-setting-wrap" id="fastGithubSettingWrap" style="display:none;">
+                            <textarea class="form-control input-block" style="height:120px;" id="fastGithubSettingTextarea"></textarea>
+                            <div class="mt-2 d-flex" style="text-align: center;">
+                                <div class="flex-1 btn btn-outline get-repo-btn" id="saveConfigButton">
+                                    保存配置
+                                </div>
+                            </div>
+                            <a href="https://github.com/fhefh2015/Fast-GitHub/issues/44" style="display:block;width:100%;text-align:center;margin-top:10px;font-size:12px;" target="_blank" title="desc">加速地址</a>
+                        </div>
                     </div>
                 </div>
             </div>
         </details>
     </span>`;
         const insertElem = document.querySelector(".file-navigation");
-        const frag = document.createRange().createContextualFragment(template);
-        insertElem && insertElem.appendChild(frag.firstChild);
+        insertElem && insertElem.appendChild(createDoc(template).firstChild);
 
         try {
-            const downloadBtn = document.getElementById('downloadZIP');
-            downloadBtn && downloadBtn.addEventListener('click', function () {
-                download();
+            const downloadBtn = document.getElementById("downloadZIP");
+            downloadBtn &&
+                downloadBtn.addEventListener(
+                    "click",
+                    function () {
+                        download();
+                    },
+                    false
+                );
+
+            const fastGithubListWrap = document.getElementById("fastGithubListWrap");
+            const fastGithubSettingWrap = document.getElementById(
+                "fastGithubSettingWrap"
+            );
+
+            const settingConfigButton = document.getElementById(
+                "settingConfigButton"
+            );
+            settingConfigButton &&
+                settingConfigButton.addEventListener(
+                    "click",
+                    function () {
+                        elemHide(fastGithubListWrap);
+                        elemShow(fastGithubSettingWrap);
+                    },
+                    false
+                );
+
+            const textareaElem = document.getElementById("fastGithubSettingTextarea");
+
+            if (isSafari()) {
+                const customList = window.localStorage.getItem("customList");
+                if (customList) {
+                    textareaElem.value = customList;
+                } else {
+                    textareaElem.value = defaultList.join("\n");
+                }
+            }
+
+            const saveConfigButton = document.getElementById("saveConfigButton");
+            saveConfigButton && saveConfigButton.addEventListener("click", function () {
+                const textareaValue = textareaElem.value;
+                if (textareaValue === "") {
+                    alert("不能为空");
+                    return;
+                }
+                window.localStorage.setItem("customList", textareaValue)
+                alert("已保存");
+                elemHide(fastGithubSettingWrap);
+                elemShow(fastGithubListWrap);
             }, false);
 
             const infoURL = "https://yidian.one/chrome/info.json";
             fetch(infoURL)
-                .then(response => response.json())
-                .then(data => {
-                    const {
-                        url,
-                        title,
-                        desc,
-                        code,
-                        color,
-                    } = data;
+                .then((response) => response.json())
+                .then((data) => {
+                    const { url, title, desc, code, color } = data;
                     if (parseInt(code)) {
-                        const infoTemplate = `<a href=${url} target="_blank" title="desc" style="display:block;width:100%;text-align:center;margin-top:10px;font-size:12px;color:${color};">${title}</a>`
-                        const infoElem = document
-                            .createRange()
-                            .createContextualFragment(infoTemplate);
-                        document.getElementById("info-wrap").appendChild(infoElem);
+                        const infoTemplate = `<a href=${url} target="_blank" title="desc" style="display:block;width:100%;text-align:center;margin-top:10px;font-size:12px;color:${color};">${title}</a>`;
+
+                        document
+                            .getElementById("info-wrap")
+                            .appendChild(createDoc(infoTemplate).firstChild);
                     }
                 })
-                .catch(e => console.log("Oops, fetch error"))
+                .catch((e) => console.log("Oops, fetch error"));
         } catch (e) {
             console.log("Oops, error: ", e);
         }
@@ -236,8 +293,7 @@ async function main() {
             const template = `
     <a class="btn btn-outline" style="margin-top:10px;" rel="nofollow" href="${cf_url}/https://github.com/${href}">加速下载</a>
     `;
-            const frag = document.createRange().createContextualFragment(template);
-            elem.appendChild(frag);
+            elem.appendChild(createDoc(template).firstChild);
         });
 
         isAddRelease = true;
@@ -259,10 +315,7 @@ async function main() {
           加速${zip_text}
         </a>
         `;
-                    const zip_frag = document
-                        .createRange()
-                        .createContextualFragment(zip_template);
-                    el.appendChild(zip_frag);
+                    el.appendChild(createDoc(zip_template).firstChild);
                 }
             });
 
@@ -273,7 +326,41 @@ async function main() {
     function getURLPath() {
         const url = new URL(window.location.href);
         const path = url.pathname.split("/").slice(1, 4);
-        console.log("path: ", path);
         return path;
     }
+
+    function elemHide(elem) {
+        elem.style.display = "none";
+    }
+
+    function elemShow(elem) {
+        elem.style.display = "block";
+    }
+
+    function isSafari() {
+        const result = (
+            /Safari/.test(navigator.userAgent) && !/Chrome/.test(navigator.userAgent)
+        )
+        return result;
+        // return true;
+    }
+
+    function createDoc(template) {
+        const parser = new DOMParser();
+        const doc = parser.parseFromString(template, "text/html");
+        return doc;
+    }
+
+    function getObjectFromLocalStorage(key) {
+        return new Promise((resolve, reject) => {
+            try {
+                chrome.storage.sync.get(key, function (value) {
+                    resolve(value[key]);
+                });
+            } catch (ex) {
+                reject(ex);
+            }
+        });
+    };
+
 }
