@@ -287,11 +287,11 @@ async function main() {
             if (parseInt(buttonData)) {
                 return true;
             }
-
+            elem.style.alignItem = 'center';
             const href = elem.querySelector("a").getAttribute("href");
             elem.querySelector("a").setAttribute("data-button", 1);
             const template = `
-    <a class="btn btn-outline" style="margin-top:10px;" rel="nofollow" href="${cf_url}/https://github.com/${href}">加速下载</a>
+    <a class="btn btn-outline" style="margin-left: 8px;" rel="nofollow" href="${cf_url}/https://github.com/${href}">加速下载</a>
     `;
             elem.appendChild(createDoc(template).firstChild);
         });
