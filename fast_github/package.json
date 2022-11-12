@@ -1,37 +1,35 @@
 {
-  "name": "fast_github",
-  "version": "0.1.0",
-  "description": "Github download speeds are generally slow in Asia, and with this plugin the download speeds will be insane!",
-  "main": "index.js",
+  "name": "translation-machine",
+  "private": true,
+  "version": "0.0.0",
+  "type": "module",
   "scripts": {
-    "dev": "webpack --config webpack.dev.js --mode=development --watch",
-    "build": "webpack --config webpack.config.js --mode=production",
-    "pretty": "prettier --write src/**/*.{js,css,json}",
-    "zip": "zip -r extension.$(date +%Y%m%d%H%M).zip dist/"
+    "dev": "cross-env  NODE_ENV=production && tsc && vite build --watch",
+    "dev:firefox": "yarn install && tsc && TARGET=firefox vite dev",
+    "build": "cross-env NODE_ENV=production && tsc && vite build",
+    "build:firefox": "yarn install && tsc && TARGET=firefox vite build",
+    "validate": "web-ext lint -s dist"
   },
-  "author": "",
-  "license": "",
+  "resolutions": {
+    "react-error-overlay": "6.0.9"
+  },
   "devDependencies": {
-    "@babel/core": "^7.10.5",
-    "@babel/plugin-transform-runtime": "^7.10.5",
-    "@babel/preset-env": "^7.10.4",
-    "autoprefixer": "^9.8.5",
-    "babel-loader": "^8.1.0",
-    "clean-webpack-plugin": "^3.0.0",
-    "copy-webpack-plugin": "^6.0.3",
-    "core-js": "^3.6.5",
-    "css-loader": "^3.6.0",
-    "file-loader": "^6.2.0",
-    "html-loader": "^1.1.0",
-    "html-webpack-plugin": "4.5.2",
-    "mini-css-extract-plugin": "^0.9.0",
-    "postcss-loader": "^4.2.0",
-    "prettier": "^2.0.5",
-    "url-loader": "^4.1.1",
-    "webpack": "^4.43.0",
-    "webpack-cli": "^3.3.12",
-    "webpack-extension-reloader": "^1.1.4",
-    "webpack-merge": "^5.7.3"
+    "@types/chrome": "^0.0.200",
+    "@types/react-dom": "^18.0.8",
+    "@vitejs/plugin-react": "^2.2.0",
+    "autoprefixer": "^10.4.13",
+    "cross-env": "^7.0.3",
+    "postcss": "^8.4.19",
+    "react": "^18.2.0",
+    "react-dom": "^18.2.0",
+    "react-error-overlay": "6.0.9",
+    "tailwindcss": "^3.2.3",
+    "typescript": "^4.6.4",
+    "vite": "^3.2.0",
+    "vite-plugin-web-extension": "1.4.4"
   },
-  "dependencies": {}
+  "dependencies": {
+    "@types/react": "^18.0.24",
+    "terser": "^5.15.1"
+  }
 }
