@@ -1,3 +1,4 @@
+import { PageTypeItemValue } from "../other";
 import {
 	checkSelector,
 	getLocalItem,
@@ -30,14 +31,10 @@ const main = async () => {
 		const elemList = document.querySelectorAll(".Box-row a");
 
 		const [result] = Array.from(elemList).filter((elem) => {
-			if (elem.textContent?.trim().includes("Download ZIP")) {
-				return elem;
-			} else {
-				return null;
-			}
+			return elem.textContent?.trim().includes("Download ZIP");
 		});
 
-		return result.getAttribute("href") ?? null;
+		return result?.getAttribute("href") ?? null;
 	};
 
 	const mainPage = async () => {
@@ -111,13 +108,21 @@ const main = async () => {
 
 		try {
 			const downloadBtn = document.getElementById("downloadZIP");
+
 			downloadBtn?.addEventListener(
 				"click",
 				function () {
 					// const fileName = `${my_github_project}.zip`;
+					const href = getMainOrMasterURL();
+					if (!href) {
+						alert("无法获取压缩包下载地址");
+						return;
+					}
+
 					const random = randomUniqueNumbers(defaultList.length, 1)[0];
 					const cf_url = defaultList[random - 1];
-					const src = `${cf_url}/https://github.com${getMainOrMasterURL()}`;
+					const src = `${cf_url}/https://github.com${href}`;
+
 					window.location.href = src;
 				},
 				false
@@ -264,7 +269,7 @@ const main = async () => {
 		}
 
 		const issuesLists = document.querySelectorAll(
-			".edit-comment-hide table tr>td"
+			".edit-comment-hide table.user-select-contain tr.d-block>td"
 		);
 
 		if (!issuesLists) {
@@ -318,12 +323,24 @@ const main = async () => {
 	};
 
 	if (my_github_author && my_github_project) {
-		if (pageType === undefined) {
+		const myPageType = pageType as PageTypeItemValue;
+		if (myPageType === undefined) {
 			// 项目首页 https://github.com/torvalds/linux
 			mainPage();
+			console.log("getMainOrMasterURL main: ", getMainOrMasterURL());
 		}
 
-		if (pageType === "releases") {
+		if (myPageType === "tree") {
+			// 项目分支 https://github.com/GameServerManagers/LinuxGSM/tree/develop/lgsm
+			if (!getMainOrMasterURL()) {
+				return;
+			}
+
+			mainPage();
+			console.log("getMainOrMasterURL tree: ", getMainOrMasterURL());
+		}
+
+		if (myPageType === "releases") {
 			console.log("release");
 			// release页面 https://github.com/GameServerManagers/LinuxGSM/releases
 			releasesPage();
@@ -347,7 +364,7 @@ const main = async () => {
 			// });
 		}
 
-		if (pageType === "tags") {
+		if (myPageType === "tags") {
 			// tag页面 https://github.com/torvalds/linux/tags
 			tagPage();
 			// const observer = new MutationObserver(function (mutations) {
@@ -369,7 +386,7 @@ const main = async () => {
 			// });
 		}
 
-		if (pageType === "issues") {
+		if (myPageType === "issues") {
 			issuesPage();
 		}
 	}

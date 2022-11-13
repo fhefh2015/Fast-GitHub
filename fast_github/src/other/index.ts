@@ -10,7 +10,9 @@ export type FieldTypeKey = keyof typeof FieldType;
 const PageTypeItem = {
 	releases: "releases",
 	tags: "tags",
+	issues: "issues",
 	undefined: undefined,
+	tree: "tree",
 } as const;
 
 export type PageTypeKey = keyof typeof PageTypeItem;
