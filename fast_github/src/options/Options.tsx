@@ -166,24 +166,30 @@ const Options: React.FC = () => {
 							</div>
 
 							<div className="w-full md:w-full px-3 mb-6">
-								<div>
-									如果没有看到v1.5以前的加速列表，可能是导入出了问题，请重新添加并保存；
-									<br />
-									一定要点击保存！！！
+								<div className="mt-2 text-sm text-gray-500 dark:text-gray-400">
+									如果您不想做任何操作，也请点击一下保存配置。
 								</div>
-								<div className="form-text text-muted">
-									教程地址：
-									<a href="https://github.com/hunshcn/gh-proxy" target="_blank">
-										https://github.com/hunshcn/gh-proxy
+								<div className="mt-2 text-sm text-gray-500 dark:text-gray-400">
+									如果没有看到v1.5以前的加速列表,请重新添加并保存。
+								</div>
+								<div className="mt-2 text-sm text-gray-500 dark:text-gray-400">
+									自行搭建加速教程：
+									<a
+										href="https://github.com/hunshcn/gh-proxy"
+										target="_blank"
+										className=" text-blue-600 hover:underline dark:text-blue-500"
+									>
+										点击查看
 									</a>
 								</div>
-								<div className="form-text text-muted">
-									加速地址：
+								<div className="mt-2 text-sm text-gray-500 dark:text-gray-400">
+									如何使用：
 									<a
 										href="https://github.com/fhefh2015/Fast-GitHub/issues/44"
 										target="_blank"
+										className=" text-blue-600 hover:underline dark:text-blue-500"
 									>
-										https://github.com/fhefh2015/Fast-GitHub/issues/44
+										点击查看
 									</a>
 								</div>
 							</div>
