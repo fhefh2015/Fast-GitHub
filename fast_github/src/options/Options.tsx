@@ -1,5 +1,10 @@
 import React, { ChangeEvent, useEffect, useState } from "react";
-import { DefaultConfig, defaultConfigs, FieldTypeKey } from "../other";
+import {
+	DefaultConfig,
+	defaultConfigs,
+	FieldTypeKey,
+	onlySupportSelect,
+} from "../other";
 import { getLocalItem, getOldVersionLocalItem, saveLocalItem } from "../tools";
 import "./style.css";
 
@@ -8,9 +13,10 @@ const Options: React.FC = () => {
 
 	const handleChange = (
 		type: FieldTypeKey,
-		e: ChangeEvent<HTMLInputElement | HTMLTextAreaElement>
+		e: ChangeEvent<HTMLInputElement | HTMLTextAreaElement | HTMLSelectElement>
 	) => {
 		const value = e.target.value;
+		console.log("value: ", value);
 		const saveConfigs = Object.assign({}, configs, { [type]: value });
 		setConfigs(saveConfigs);
 	};
@@ -92,6 +98,55 @@ const Options: React.FC = () => {
 									onChange={(e) => handleChange("speedNumber", e)}
 									value={configs.speedNumber}
 								/>
+							</div>
+							<div className="w-full md:w-full px-3 mb-6">
+								<label
+									className="block uppercase tracking-wide text-gray-700 text-xs font-bold mb-2"
+									htmlFor="input"
+								>
+									腾讯AI翻译Token:
+								</label>
+								<input
+									id="input"
+									className="appearance-none block w-full bg-white text-gray-900 font-medium border border-gray-400 rounded-lg py-3 px-3 leading-tight focus:outline-none"
+									type="text"
+									onChange={(e) => handleChange("token", e)}
+									value={configs.token}
+									placeholder="请填写Token，才能使用"
+								/>
+							</div>
+							<div className="w-full md:w-full px-3 mb-6">
+								<label
+									className="block uppercase tracking-wide text-gray-700 text-xs font-bold mb-2"
+									htmlFor="language"
+								>
+									{/* 
+									腾讯交互翻译 https://transmart.qq.com/zh-CN/index
+									目标语言 只有 中文和英文让你选择；
+									为啥用这个，目前免费~~~
+									*/}
+									翻译目标语言:
+								</label>
+								<select
+									id="language"
+									className="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
+									value={configs.language}
+									onChange={(e) => {
+										handleChange("language", e);
+									}}
+								>
+									{onlySupportSelect.map((item) => {
+										if (item.code === configs.language) {
+											return (
+												<option value={item.code} selected>
+													{item.chn_name}
+												</option>
+											);
+										}
+
+										return <option value={item.code}>{item.chn_name}</option>;
+									})}
+								</select>
 							</div>
 							<div className="w-full md:w-full px-3 mb-6">
 								<label

@@ -1,6 +1,9 @@
-import { MessageType } from "../other";
-import { checkSelector, getLocalItem, randomUniqueNumbers } from "../tools";
-import "./style.css";
+import {
+	checkSelector,
+	getLocalItem,
+	randomUniqueNumbers,
+	translateElem,
+} from "../tools";
 const main = async () => {
 	const speedButtonId = "fast_github";
 
@@ -17,6 +20,11 @@ const main = async () => {
 	const [my_github_author, my_github_project, pageType] = urlPath;
 	// const my_github_project_git = `${my_github_project}.git`;
 	const my_github_project_url = `${my_github_url}/${my_github_author}/${my_github_project}`;
+
+	if (!my_github_author && !my_github_project) {
+		console.log("github.com");
+		return;
+	}
 
 	const getMainOrMasterURL = (): string | null => {
 		const elemList = document.querySelectorAll(".Box-row a");
@@ -128,11 +136,15 @@ const main = async () => {
 					};
 					const { url, title, desc, code, color } = data as DataType;
 					if (parseInt(code)) {
-						const infoTemplate = `<a href=${url} target="_blank" title="${desc}" style="display:block;width:100%;text-align:center;margin-top:10px;font-size:12px;color:${color};">${title}</a>`;
+						const infoTemplate = `<a id="my-notice" href=${url} target="_blank" title="${desc}" style="display:block;width:100%;text-align:center;margin-top:10px;font-size:12px;color:${color};">${title}</a>`;
 
-						document
-							.getElementById("info-wrap")
-							?.insertAdjacentHTML("beforeend", infoTemplate);
+						const elem = document.getElementById("info-wrap");
+
+						if (elem?.querySelector("#my-notice")) {
+							return;
+						}
+
+						elem?.insertAdjacentHTML("beforeend", infoTemplate);
 					}
 				})
 				.catch(() => console.log("Oops, fetch error"));
@@ -142,8 +154,6 @@ const main = async () => {
 	};
 
 	const releasesPage = (elem?: HTMLElement) => {
-		console.log("elem: ", typeof elem);
-
 		const liList = elem
 			? checkSelector(elem)
 				? elem.querySelectorAll("li.Box-row")
@@ -217,6 +227,11 @@ const main = async () => {
 
 		list.forEach((item, index) => {
 			const liList = item.querySelectorAll("ul>li.d-inline-block");
+
+			if (!liList) {
+				return;
+			}
+
 			liList.forEach((liItem, index) => {
 				console.log("liItem: ", liItem);
 				if (liItem.classList.contains(id) || index < 2) {
@@ -243,6 +258,65 @@ const main = async () => {
 		});
 	};
 
+	const issuesPage = () => {
+		if (configs.language === "nothing" || configs.token?.trim() === "") {
+			return;
+		}
+
+		const issuesLists = document.querySelectorAll(
+			".edit-comment-hide table tr>td"
+		);
+
+		if (!issuesLists) {
+			return;
+		}
+
+		issuesLists.forEach((item) => {
+			const button = item.parentNode?.querySelector(
+				".issues-translation-button"
+			);
+
+			if (button) {
+				return;
+			}
+
+			const clickButton = document.createElement("div");
+			clickButton.textContent = "翻译";
+			clickButton.className = "issues-translation-button";
+
+			clickButton.style.cssText =
+				"font-size: 15px;cursor: pointer;color: rgb(29, 155, 240);padding: 0px 16px;margin-bottom:10px;text-align:right;";
+
+			item.after(clickButton);
+
+			clickButton.addEventListener(
+				"click",
+				async (e) => {
+					e.preventDefault();
+
+					const cloneElem = item.cloneNode(true) as HTMLElement;
+					const contentElem = item.parentNode?.querySelector(
+						".issues-translation-content"
+					);
+
+					if (contentElem) {
+						contentElem.remove();
+					}
+
+					cloneElem.classList.add("issues-translation-content");
+					cloneElem.style.cssText = "display:block;margin-top:10px;";
+
+					translateElem(cloneElem);
+
+					clickButton.after(cloneElem);
+
+					return;
+				},
+				false
+			);
+		});
+	};
+
 	if (my_github_author && my_github_project) {
 		if (pageType === undefined) {
 			// 项目首页 https://github.com/torvalds/linux
@@ -254,55 +328,76 @@ const main = async () => {
 			// release页面 https://github.com/GameServerManagers/LinuxGSM/releases
 			releasesPage();
 
-			const observer = new MutationObserver(function (mutations) {
-				mutations.forEach(function (mutation) {
-					mutation.addedNodes.forEach((element) => {
-						const rootElem = element as HTMLElement;
-						if (!checkSelector(rootElem)) {
-							return;
-						}
+			// const observer = new MutationObserver(function (mutations) {
+			// 	mutations.forEach(function (mutation) {
+			// 		mutation.addedNodes.forEach((element) => {
+			// 			const rootElem = element as HTMLElement;
+			// 			if (!checkSelector(rootElem)) {
+			// 				return;
+			// 			}
 
-						releasesPage(rootElem);
-					});
-				});
-			});
+			// 			releasesPage(rootElem);
+			// 		});
+			// 	});
+			// });
 
-			observer.observe(document, {
-				childList: true,
-				subtree: true,
-			});
+			// observer.observe(document, {
+			// 	childList: true,
+			// 	subtree: true,
+			// });
 		}
 
 		if (pageType === "tags") {
 			// tag页面 https://github.com/torvalds/linux/tags
 			tagPage();
-			const observer = new MutationObserver(function (mutations) {
-				mutations.forEach(function (mutation) {
-					mutation.addedNodes.forEach((element) => {
-						const rootElem = element as HTMLElement;
-						if (!checkSelector(rootElem)) {
-							return;
-						}
+			// const observer = new MutationObserver(function (mutations) {
+			// 	mutations.forEach(function (mutation) {
+			// 		mutation.addedNodes.forEach((element) => {
+			// 			const rootElem = element as HTMLElement;
+			// 			if (!checkSelector(rootElem)) {
+			// 				return;
+			// 			}
 
-						tagPage(rootElem);
-					});
-				});
-			});
+			// 			tagPage(rootElem);
+			// 		});
+			// 	});
+			// });
 
-			observer.observe(document, {
-				childList: true,
-				subtree: true,
-			});
+			// observer.observe(document, {
+			// 	childList: true,
+			// 	subtree: true,
+			// });
+		}
+
+		if (pageType === "issues") {
+			issuesPage();
 		}
 	}
 };
 
-chrome.runtime.onMessage.addListener(function (request, sender, sendResponse) {
-	// 监听Github URL的变化 因为ta用了Pjax刷新
-	const message: MessageType = request;
-	console.log("c0");
-	if (message.status === "complete") {
-		console.log("c1");
-		main();
-	}
+// 监听Github URL的变化 因为ta用了Pjax刷新
+const observer = new MutationObserver(function (mutations) {
+	console.log("c3");
+	main();
 });
+
+observer.observe(document, {
+	childList: true,
+	subtree: true,
+});
+
+// if (!chrome.runtime.onMessage.hasListeners()) {
+// 	chrome.runtime.onMessage.addListener(function (
+// 		request,
+// 		sender,
+// 		sendResponse
+// 	) {
+// 		// 监听Github URL的变化 因为ta用了Pjax刷新
+// 		const message: MessageType = request;
+// 		console.log("c0");
+// 		if (message.status === "complete") {
+// 			console.log("c1");
+// 			main();
+// 		}
+// 	});
+// }

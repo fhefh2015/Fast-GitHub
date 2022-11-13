@@ -1,4 +1,5 @@
-import { MessageType } from "../other";
+import { RuntimeSendMessageType } from "../other";
+import { translateByTencent } from "../tools";
 
 chrome.runtime.onInstalled.addListener((details) => {
 	const { reason } = details;
@@ -14,12 +15,72 @@ chrome.runtime.onInstalled.addListener((details) => {
 	}
 });
 
-chrome.tabs.onUpdated.addListener(function (tabId, changeInfo, tab) {
-	if (tab.status === "complete" && tab.url && tab.url.includes("github.com")) {
-		const message: MessageType = {
-			status: "complete",
-			url: tab.url,
-		};
-		chrome.tabs.sendMessage(tabId, message);
-	}
+type SendResponseMessageType = [string | null, string | null];
+
+chrome.runtime.onMessage.addListener((message, _, sendResponse) => {
+	const data = message as RuntimeSendMessageType;
+	const content = data.content;
+
+	const sendResponseMessage = (dataObject: SendResponseMessageType) => {
+		console.log("content: ", content);
+		const [data, error] = dataObject;
+		let sendMessageObject: RuntimeSendMessageType = { content: "" };
+
+		if (data) {
+			sendMessageObject.content = data;
+		}
+
+		if (error) {
+			sendMessageObject.content = error;
+		}
+
+		sendResponse(sendMessageObject);
+	};
+
+	translateByTencent(content).then((data) => {
+		console.log("data: ", data);
+		sendResponseMessage([data[0], data[1]]);
+	});
+	return true;
 });
+
+// (async () => {
+// 	translateByTencent("hello").then((data) => {
+// 		console.log("data: ", data);
+// 		sendResponseMessage([data[0], data[1]]);
+// 	});
+// })();
+
+function sendResponseMessage(arg0: (string | null)[]) {
+	throw new Error("Function not implemented.");
+}
+// chrome.webNavigation.onHistoryStateUpdated.addListener(
+// 	(details) => {
+// 		console.log(`onHistoryStateUpdated: ${details.url}`);
+
+// 		if (details.url.includes("github.com")) {
+// 			const message: MessageType = {
+// 				status: "complete",
+// 				url: details.url,
+// 			};
+
+// 			chrome.tabs.sendMessage(details.tabId, message);
+// 		}
+
+// 		console.log(`Transition type: ${details.transitionType}`);
+// 		console.log(`Transition qualifiers: ${details.transitionQualifiers}`);
+// 	},
+// 	{
+// 		url: [{ hostContains: "github.com" }],
+// 	}
+// );
+
+// chrome.tabs.onUpdated.addListener(function (tabId, changeInfo, tab) {
+// 	if (tab.status === "complete" && tab.url && tab.url.includes("github.com")) {
+// 		const message: MessageType = {
+// 			status: "complete",
+// 			url: tab.url,
+// 		};
+// 		chrome.tabs.sendMessage(tabId, message);
+// 	}
+// });
