@@ -3,9 +3,11 @@ import {
 	defaultConfigs,
 	LangDetectObject,
 	languageData,
+	ResponseData,
+	ResponseError,
 	RuntimeSendMessageType,
 	TranslationBlockObject,
-} from "../other";
+} from "../types";
 
 export const saveLocalItem = (object: DefaultConfig) => {
 	chrome.storage.sync.set({ configs: object });
@@ -89,7 +91,7 @@ export const translateElem = async (
 
 export const translateByTencent = async (
 	content: string
-): Promise<[string | null, string | null]> => {
+): Promise<[ResponseData, ResponseError]> => {
 	const configs = await getLocalItem();
 
 	return new Promise((resolve, _) => {

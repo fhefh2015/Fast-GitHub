@@ -3,6 +3,7 @@ const FieldType = {
 	speedList: "speedList",
 	token: "token",
 	language: "language",
+	webIDE: "webIDE",
 } as const;
 
 export type FieldTypeKey = keyof typeof FieldType;
@@ -18,6 +19,9 @@ const PageTypeItem = {
 export type PageTypeKey = keyof typeof PageTypeItem;
 export type PageTypeItemValue = typeof PageTypeItem[PageTypeKey];
 
+export type ResponseData = string | null;
+export type ResponseError = string | null;
+
 const LanguageItem = {
 	nothing: "nothing",
 	zh: "zh",
@@ -27,12 +31,22 @@ const LanguageItem = {
 export type LanguageItemKey = keyof typeof LanguageItem;
 // export type LanguageItemValue = typeof LanguageItem[PageTypeKey];
 
+const WebIDEItem = {
+	nothing: "Nothing",
+	github1s: "GitHub1s.Com",
+	githubDev: "GitHub.Dev",
+} as const;
+
+export type WebIDEItemKey = keyof typeof WebIDEItem;
+export type WebIDEItemValue = typeof WebIDEItem[WebIDEItemKey];
+
 export interface DefaultConfig {
 	importOldList?: boolean;
 	speedNumber: number;
 	speedList: string;
 	token?: string;
 	language?: LanguageItemKey;
+	webIDE?: WebIDEItemValue;
 }
 
 export const defaultConfigs: DefaultConfig = {
@@ -41,6 +55,7 @@ export const defaultConfigs: DefaultConfig = {
 	speedList: "https://gh.api.99988866.xyz/",
 	token: "",
 	language: "nothing",
+	webIDE: "GitHub1s.Com",
 };
 
 const Status = {

@@ -1,5 +1,5 @@
-import { RuntimeSendMessageType } from "../other";
 import { translateByTencent } from "../tools";
+import { ResponseData, ResponseError, RuntimeSendMessageType } from "../types";
 
 chrome.runtime.onInstalled.addListener((details) => {
 	const { reason } = details;
@@ -15,7 +15,7 @@ chrome.runtime.onInstalled.addListener((details) => {
 	}
 });
 
-type SendResponseMessageType = [string | null, string | null];
+type SendResponseMessageType = [ResponseData, ResponseError];
 
 chrome.runtime.onMessage.addListener((message, _, sendResponse) => {
 	const data = message as RuntimeSendMessageType;
@@ -37,23 +37,18 @@ chrome.runtime.onMessage.addListener((message, _, sendResponse) => {
 		sendResponse(sendMessageObject);
 	};
 
-	translateByTencent(content).then((data) => {
-		console.log("data: ", data);
-		sendResponseMessage([data[0], data[1]]);
+	translateByTencent(content).then((responseData) => {
+		sendResponseMessage(responseData);
 	});
 	return true;
 });
 
 // (async () => {
-// 	translateByTencent("hello").then((data) => {
-// 		console.log("data: ", data);
-// 		sendResponseMessage([data[0], data[1]]);
+// 	translateByTencent("hello").then((responseData) => {
+// 		console.log("data: ", responseData);
 // 	});
 // })();
 
-function sendResponseMessage(arg0: (string | null)[]) {
-	throw new Error("Function not implemented.");
-}
 // chrome.webNavigation.onHistoryStateUpdated.addListener(
 // 	(details) => {
 // 		console.log(`onHistoryStateUpdated: ${details.url}`);

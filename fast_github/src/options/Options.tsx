@@ -1,14 +1,21 @@
 import React, { ChangeEvent, useEffect, useState } from "react";
+import { getLocalItem, getOldVersionLocalItem, saveLocalItem } from "../tools";
 import {
 	DefaultConfig,
 	defaultConfigs,
 	FieldTypeKey,
 	onlySupportSelect,
-} from "../other";
-import { getLocalItem, getOldVersionLocalItem, saveLocalItem } from "../tools";
+	WebIDEItemValue,
+} from "../types";
 import "./style.css";
 
 const Options: React.FC = () => {
+	const webIDEItems: WebIDEItemValue[] = [
+		"Nothing",
+		"GitHub.Dev",
+		"GitHub1s.Com",
+	];
+
 	const [configs, setConfigs] = useState<DefaultConfig>(defaultConfigs);
 
 	const handleChange = (
@@ -148,6 +155,49 @@ const Options: React.FC = () => {
 									})}
 								</select>
 							</div>
+
+							<div className="w-full md:w-full px-3 mb-6">
+								<label
+									className="block uppercase tracking-wide text-gray-700 text-xs font-bold mb-2"
+									htmlFor="webIDE"
+								>
+									Web IDE:
+								</label>
+								<select
+									id="webIDE"
+									className="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
+									value={configs.webIDE}
+									onChange={(e) => {
+										handleChange("webIDE", e);
+									}}
+								>
+									{webIDEItems.map((item) => {
+										if (item === configs.webIDE) {
+											return (
+												<option value={item} selected>
+													{item}
+												</option>
+											);
+										}
+
+										return <option value={item}>{item}</option>;
+									})}
+								</select>
+								<div className="mt-2 text-sm text-gray-500 dark:text-gray-400">
+									查看源码使用的Web IDE，默认使用GitHub1s
+								</div>
+								<div className="mt-2 text-sm text-gray-500 dark:text-gray-400">
+									关于GitHub1s：
+									<a
+										href="https://github.com/conwnet/github1s"
+										target="_blank"
+										className=" text-blue-600 hover:underline dark:text-blue-500"
+									>
+										点击查看
+									</a>
+								</div>
+							</div>
+
 							<div className="w-full md:w-full px-3 mb-6">
 								<label
 									className="block uppercase tracking-wide text-gray-700 text-xs font-bold mb-2"
