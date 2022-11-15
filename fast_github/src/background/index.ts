@@ -9,10 +9,10 @@ chrome.runtime.onInstalled.addListener((details) => {
 		return;
 	}
 
-	if (reason === "update") {
-		chrome.runtime.openOptionsPage();
-		return;
-	}
+	// if (reason === "update") {
+	// 	chrome.runtime.openOptionsPage();
+	// 	return;
+	// }
 });
 
 type SendResponseMessageType = [ResponseData, ResponseError];
