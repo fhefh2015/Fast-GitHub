@@ -15,6 +15,7 @@
   },
   "devDependencies": {
     "@types/chrome": "^0.0.200",
+    "@types/file-saver": "^2.0.5",
     "@types/react-dom": "^18.0.8",
     "@vitejs/plugin-react": "^2.2.0",
     "autoprefixer": "^10.4.13",
@@ -30,6 +31,7 @@
   },
   "dependencies": {
     "@types/react": "^18.0.24",
+    "file-saver": "^2.0.5",
     "terser": "^5.15.1"
   }
 }

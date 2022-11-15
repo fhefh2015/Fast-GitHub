@@ -1,3 +1,4 @@
+import { saveAs } from "file-saver";
 import {
 	checkSelector,
 	getLocalItem,
@@ -5,6 +6,8 @@ import {
 	translateElem,
 } from "../tools";
 import { PageTypeItemValue } from "../types";
+import "./style.css";
+
 const main = async () => {
 	const speedButtonId = "fast_github";
 
@@ -15,22 +18,19 @@ const main = async () => {
 	const defaultList = configs.speedList.split("\n");
 	const speedNumber = configs.speedNumber;
 
-	console.log("urlPath: ", urlPath, urlInfo.pathname.split("/"));
-
 	const my_github_url = urlInfo.origin;
 	const [my_github_author, my_github_project, pageType] = urlPath;
 	// const my_github_project_git = `${my_github_project}.git`;
 	const my_github_project_url = `${my_github_url}/${my_github_author}/${my_github_project}`;
 
 	if (!my_github_author && !my_github_project) {
-		console.log("github.com");
 		return;
 	}
 
 	const checkPrivateProject = () => {
 		const spanList = document.querySelectorAll("span.Label--secondary");
 
-		console.log("spanList: ", spanList);
+		console.log("checkPrivateProject: ", spanList);
 
 		const [item] = Array.from(spanList).filter((item) => {
 			return item.textContent?.trim() === "Private";
@@ -94,6 +94,11 @@ const main = async () => {
 			}
 
 			const href = urlItem.getAttribute("href");
+
+			if (!href) {
+				return;
+			}
+
 			const webIDE = configs.webIDE;
 
 			if (!webIDE) {
@@ -107,11 +112,89 @@ const main = async () => {
 			const template = `
 			<a href="https://${
 				webIDE.toLowerCase() ?? "github1s.com"
-			}${href}" target="_blank" role="gridcell" class="mr-1 ml-3 ${buttonId}" style="width: 16px;display: flex;align-content: center;align-items: center;justify-content: center;cursor: pointer;" title="使用Web IDE查看文件">
+			}${href}" target="_blank" role="gridcell" class="mr-2 ml-3 ${buttonId}" style="width: 16px;display: flex;align-content: center;align-items: center;justify-content: center;cursor: pointer;" title="使用Web IDE查看文件">
 			<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16" width="16" height="16" class="${buttonId}"><path fill-rule="evenodd" d="M1.75 1.5a.25.25 0 00-.25.25v12.5c0 .138.112.25.25.25h12.5a.25.25 0 00.25-.25V1.75a.25.25 0 00-.25-.25H1.75zM0 1.75C0 .784.784 0 1.75 0h12.5C15.216 0 16 .784 16 1.75v12.5A1.75 1.75 0 0114.25 16H1.75A1.75 1.75 0 010 14.25V1.75zm9.22 3.72a.75.75 0 000 1.06L10.69 8 9.22 9.47a.75.75 0 101.06 1.06l2-2a.75.75 0 000-1.06l-2-2a.75.75 0 00-1.06 0zM6.78 6.53a.75.75 0 00-1.06-1.06l-2 2a.75.75 0 000 1.06l2 2a.75.75 0 101.06-1.06L5.31 8l1.47-1.47z" fill="#57606a"></path></svg>
 			</a>
 			`;
 			item.insertAdjacentHTML("beforeend", template);
+
+			if (
+				item
+					.querySelector("svg.octicon")
+					?.getAttribute("aria-label")
+					?.trim() !== "File"
+			) {
+				return;
+			}
+
+			// 添加下载按钮
+			const rawURL = href.replace("/blob/", "/");
+			const [downloadFileName] = href.split("/").slice(-1);
+
+			const downloadIconTemplate = `
+			<div class="download_file" role="gridcell" class="mr-1 ml-3 ${buttonId}" style="width: 16px;display: flex;align-content: center;align-items: center;justify-content: center;cursor: pointer;" title="点击下载${downloadFileName}">
+				<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16" width="16" height="16" class="${buttonId} download-icon">
+					<path fill-rule="evenodd" d="M7.47 10.78a.75.75 0 001.06 0l3.75-3.75a.75.75 0 00-1.06-1.06L8.75 8.44V1.75a.75.75 0 00-1.5 0v6.69L4.78 5.97a.75.75 0 00-1.06 1.06l3.75 3.75zM3.75 13a.75.75 0 000 1.5h8.5a.75.75 0 000-1.5h-8.5z" fill="#57606a"></path>
+				</svg>
+				<svg class="${buttonId} loading-icon" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" style="margin: auto; background: none; display: none; shape-rendering: auto;" width="16px" height="16px" viewBox="0 0 100 100" preserveAspectRatio="xMidYMid">
+						<circle cx="50" cy="50" r="28" stroke-width="8" stroke="#57606a" stroke-dasharray="43.982297150257104 43.982297150257104" fill="none" stroke-linecap="round">
+						<animateTransform attributeName="transform" type="rotate" repeatCount="indefinite" dur="1s" keyTimes="0;1" values="0 50 50;360 50 50"></animateTransform>
+					</circle>
+				</svg>
+			</div>
+			`;
+
+			item.insertAdjacentHTML("beforeend", downloadIconTemplate);
+
+			item.querySelector(".download_file")?.addEventListener(
+				"click",
+				(e) => {
+					e.preventDefault();
+					const target = e.currentTarget as HTMLElement;
+					console.log("downloadFile123: ", target);
+
+					if (target.getAttribute("data-download") === "true") {
+						alert("正在下载中...");
+						return;
+					}
+
+					target.setAttribute("data-download", "true");
+
+					const downloadIconElem = target.querySelector(
+						".download-icon"
+					) as HTMLElement;
+					const loadingIconElem = target.querySelector(
+						".loading-icon"
+					) as HTMLElement;
+
+					downloadIconElem.style.display = "none";
+					loadingIconElem.style.display = "block";
+
+					const random = randomUniqueNumbers(defaultList.length, 1)[0];
+					const url = defaultList[random - 1];
+					const cf_url = url.endsWith("/") ? url : `${url}/`;
+					const downloadURL = `${cf_url}https://raw.githubusercontent.com${rawURL}`;
+
+					fetch(downloadURL)
+						.then((response) => response.blob())
+						.then(function (data) {
+							console.log("fetch: ", data);
+
+							saveAs(data, downloadFileName);
+
+							downloadIconElem.style.display = "block";
+							loadingIconElem.style.display = "none";
+							target.setAttribute("data-download", "false");
+						})
+						.catch((e: Error) => {
+							alert(e.message);
+							target.setAttribute("data-download", "false");
+							downloadIconElem.style.display = "block";
+							loadingIconElem.style.display = "none";
+						});
+				},
+				false
+			);
 		});
 	};
 
@@ -253,20 +336,6 @@ const main = async () => {
 			return;
 		}
 
-		// if (myElem.tagName.toLowerCase() != "div") {
-		// 	return;
-		// }
-
-		// if (!myElem.dataset.viewComponent) {
-		// 	return;
-		// }
-
-		// if (!myElem.classList.contains("Box")) {
-		// 	return;
-		// }
-
-		// console.log("liList: ", liList);
-
 		liList.forEach((item) => {
 			if (item.classList.contains(id)) {
 				return;
@@ -282,7 +351,6 @@ const main = async () => {
 
 			const rangeNumber = randomUniqueNumbers(defaultList.length, 1);
 			const url = defaultList[rangeNumber[0] - 1];
-			console.log("url: ", url);
 			const itemURL = url.endsWith("/") ? url : `${url}/`;
 			const divTemplate = `
 			<div data-view-component="true" class="d-flex ml-md-3">
@@ -312,14 +380,14 @@ const main = async () => {
 			return;
 		}
 
-		list.forEach((item, index) => {
+		list.forEach((item) => {
 			const liList = item.querySelectorAll("ul>li.d-inline-block");
 
 			if (!liList) {
 				return;
 			}
 
-			liList.forEach((liItem, index) => {
+			liList.forEach((liItem) => {
 				console.log("liItem: ", liItem);
 				if (liItem.classList.contains(id)) {
 					return;

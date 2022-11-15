@@ -2,7 +2,7 @@
   "manifest_version": 3,
   "name": "GitHub加速",
   "description": "国内Github下载很慢，用上了这个插件后，下载速度嗖嗖嗖的~！’",
-  "version": "1.5.6",
+  "version": "1.5.7",
   "options_page": "options/index.html",
   "background": {
     "service_worker": "background/index.ts"

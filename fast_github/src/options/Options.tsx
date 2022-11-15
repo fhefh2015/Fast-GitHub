@@ -84,13 +84,10 @@ const Options: React.FC = () => {
 
 	return (
 		<>
-			<div className="text-center mt-24">
-				<h2 className="text-4xl tracking-tight">选项设置</h2>
-			</div>
 			{configs && (
 				<div className="flex justify-center my-2 mx-4 md:mx-0">
 					<div className="w-full max-w-xl bg-white rounded-lg shadow-md p-6">
-						<div className="flex flex-wrap -mx-3 mb-6">
+						<div className="flex flex-wrap -mx-3">
 							<div className="w-full md:w-full px-3 mb-6">
 								<label
 									className="block uppercase tracking-wide text-gray-700 text-xs font-bold mb-2"
@@ -207,7 +204,7 @@ const Options: React.FC = () => {
 								</label>
 								<textarea
 									id="message"
-									rows={10}
+									rows={6}
 									className="block p-2.5 w-full text-sm text-gray-900 bg-gray-50 rounded-lg border border-gray-300 focus:ring-blue-500 focus:border-blue-500 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
 									placeholder="请填写加速列表，一行代表一个，回车分隔"
 									onChange={(e) => handleChange("speedList", e)}
