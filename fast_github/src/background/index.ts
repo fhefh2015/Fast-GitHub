@@ -1,4 +1,4 @@
-import { translateByTencent } from "../tools";
+import { getLocalItem, translateByTencent } from "../tools";
 import { ResponseData, ResponseError, RuntimeSendMessageType } from "../types";
 
 chrome.runtime.onInstalled.addListener((details) => {
@@ -9,10 +9,13 @@ chrome.runtime.onInstalled.addListener((details) => {
 		return;
 	}
 
-	// if (reason === "update") {
-	// 	chrome.runtime.openOptionsPage();
-	// 	return;
-	// }
+	getLocalItem().then((configs) => {
+		if (!configs.importOldList) {
+			if (reason === "update") {
+				chrome.runtime.openOptionsPage();
+			}
+		}
+	});
 });
 
 type SendResponseMessageType = [ResponseData, ResponseError];

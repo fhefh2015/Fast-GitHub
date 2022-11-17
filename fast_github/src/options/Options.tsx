@@ -38,6 +38,7 @@ const Options: React.FC = () => {
 			speedNumber:
 				configs.speedNumber > listNumber ? listNumber : configs.speedNumber,
 			speedList: configs.speedList.replace(/(\n)+/g, "\n").replace(/\n+$/, ""),
+			importOldList: true,
 		});
 
 		setConfigs(saveConfigs);
