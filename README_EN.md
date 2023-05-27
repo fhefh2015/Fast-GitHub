@@ -11,7 +11,8 @@ Github download speeds are generally slow in Asia, and with this plugin the down
 
 [![Page Views Count](https://badges.toozhao.com/badges/01EH1R0YMQANV1ACQXTEBK7JCN/green.svg)](https://badges.toozhao.com/badges/01EH1R0YMQANV1ACQXTEBK7JCN/green.svg "Get your own page views count badge on badges.toozhao.com")
 
-
+# Support
+Power By <a href="https://www.cloudflare.com/">Cloudflare</a>
 
 # Download
 

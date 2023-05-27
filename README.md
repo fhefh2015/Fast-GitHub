@@ -6,6 +6,9 @@
 
 [![Page Views Count](https://badges.toozhao.com/badges/01EH1R0YMQANV1ACQXTEBK7JCN/green.svg)](https://badges.toozhao.com/badges/01EH1R0YMQANV1ACQXTEBK7JCN/green.svg "Get your own page views count badge on badges.toozhao.com")
 
+# 支持
+由<a href="https://www.cloudflare.com/">Cloudflare</a>提供强力支持
+
 
 
 # 下载插件
