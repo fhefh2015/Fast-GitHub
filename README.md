@@ -10,19 +10,23 @@
 由<a href="https://www.cloudflare.com/">Cloudflare</a>提供强力支持
 
 
-
 # 下载插件
 
-Chrome插件地址更新,很抱歉给大家带来的不便。
+感谢大家一直以来的支持
+
+**GitHub加速**已从Chrome商店下架
+
+原因：
+
+1. Chrome商店的使用人数在逐渐减少
+2. 现在已经有了更好加速GitHub访问、下载的工具和方法
+
+![CleanShot 2024-02-17 at 13 07 23@2x](https://github.com/fhefh2015/Fast-GitHub/assets/14891797/a8100c4a-6796-4f56-b609-5fca668d1145)
+
 
 <table>
 <tbody>
 <tr>
-<td>
-<a href="https://chrome.google.com/webstore/detail/github加速/ffjjnphohkfckeplcjflmgneebafggej" target="_blank">
-        <img src="https://i.loli.net/2021/04/23/IqpU7COKQvzrcyG.png" />
-      </a>
-</td>
 <td><a href="https://apps.apple.com/cn/app/fastgithub/id1564025982?mt=12" target="_blank">
         <img src="https://i.loli.net/2021/04/23/SKsywoGWg1HvEja.png" />
       </a></td>
